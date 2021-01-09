@@ -1,6 +1,12 @@
+.App {
+  height: 100vh;
+  position: relative;
+  overflow: hidden; 
+}
+
 .main {
   padding: 0px 20px;
-  margin-top: 60px;  
+  margin-top: 60px;   
 }
 
 .status {

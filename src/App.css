@@ -721,13 +721,174 @@ html {
   font-weight: 600;
 }
 
-.addtask {
+.addTodo {
   position: fixed;
   bottom: 0;
   left: 0px;
   right: 0px;
   background-color: #FFFFFF;
   height: 88px;
+}
+
+.popup {
+  background-color: #FFFFFF;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 35px 20px;
+  border-radius: 40px 40px 0px 0px;
+  opacity: 0%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.popup .input-title {
+  background-color: #F9F9F9;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Barlow", "Open Sans", sans-serif;
+  color: #BDC9E7;
+}
+
+.popup .input-title::-webkit-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .input-title:-ms-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .input-title::-ms-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .input-title::placeholder {
+  color: #B7B7B7;
+}
+
+.popup .field-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
+}
+
+.popup .field-wrap .field-start, .popup .field-wrap .field-end {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+.popup .field-wrap .field-start .label-start, .popup .field-wrap .field-start .label-end, .popup .field-wrap .field-end .label-start, .popup .field-wrap .field-end .label-end {
+  margin-bottom: 6px;
+  color: #707070;
+  font-weight: 600;
+}
+
+.popup .field-wrap .field-start .input-start, .popup .field-wrap .field-start .input-end, .popup .field-wrap .field-end .input-start, .popup .field-wrap .field-end .input-end {
+  background-color: #F9F9F9;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 6px 15px;
+  font-size: 18px;
+  color: #B5BED6;
+  font-weight: 600;
+  max-width: 70px;
+}
+
+.popup .field-wrap .field-start .input-start::-webkit-input-placeholder, .popup .field-wrap .field-start .input-end::-webkit-input-placeholder, .popup .field-wrap .field-end .input-start::-webkit-input-placeholder, .popup .field-wrap .field-end .input-end::-webkit-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .field-wrap .field-start .input-start:-ms-input-placeholder, .popup .field-wrap .field-start .input-end:-ms-input-placeholder, .popup .field-wrap .field-end .input-start:-ms-input-placeholder, .popup .field-wrap .field-end .input-end:-ms-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .field-wrap .field-start .input-start::-ms-input-placeholder, .popup .field-wrap .field-start .input-end::-ms-input-placeholder, .popup .field-wrap .field-end .input-start::-ms-input-placeholder, .popup .field-wrap .field-end .input-end::-ms-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .field-wrap .field-start .input-start::placeholder, .popup .field-wrap .field-start .input-end::placeholder, .popup .field-wrap .field-end .input-start::placeholder, .popup .field-wrap .field-end .input-end::placeholder {
+  color: #B7B7B7;
+}
+
+.popup .label-desc {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #707070;
+  font-weight: 600;
+}
+
+.popup .input-desc {
+  background-color: #F9F9F9;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Barlow", "Open Sans", sans-serif;
+  color: #BDC9E7;
+}
+
+.popup .input-desc::-webkit-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .input-desc:-ms-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .input-desc::-ms-input-placeholder {
+  color: #B7B7B7;
+}
+
+.popup .input-desc::placeholder {
+  color: #B7B7B7;
+}
+
+.popup.active {
+  opacity: 100%;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.popup-bg {
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0%;
+  pointer-events: none;
+}
+
+.popup-bg.active {
+  opacity: 100%;
+  pointer-events: all;
+}
+
+.App {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .main {
