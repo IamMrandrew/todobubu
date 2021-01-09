@@ -1,11 +1,14 @@
 import React from 'react'
 import Todo from './Todo'
 
-const Timeslot = () => {
+const Timeslot = ({todo}) => {
   return (
     <div className="timeslot">
-      <h2 className="time">0900</h2>
-      <Todo />
+      <div className="time">
+        <h2 className="time-start">{todo.start}</h2>
+        <h2 className="time-end">{todo.end}</h2>
+      </div>
+      <Todo todo={todo} />
     </div>
   )
 }

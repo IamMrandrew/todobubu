@@ -682,10 +682,28 @@ html {
 }
 
 .timeslot .time {
-  color: #707070;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.timeslot .time h2 {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 5px;
+}
+
+.timeslot .time .time-start {
+  color: #707070;
+  min-width: 45px;
+  text-align: center;
+  margin-right: 4px;
+}
+
+.timeslot .time .time-end {
+  color: #B7B7B7;
+  min-width: 45px;
+  text-align: center;
 }
 
 .button {
@@ -705,9 +723,11 @@ html {
 
 .addtask {
   position: fixed;
-  bottom: 38px;
+  bottom: 0;
   left: 0px;
   right: 0px;
+  background-color: #FFFFFF;
+  height: 88px;
 }
 
 .main {
@@ -736,5 +756,9 @@ html {
   color: #B7B7B7;
   font-size: 18px;
   font-weight: 600;
+}
+
+.bottom {
+  height: 88px;
 }
 /*# sourceMappingURL=App.css.map */

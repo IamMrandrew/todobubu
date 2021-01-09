@@ -1,8 +1,24 @@
 .timeslot {
   .time {
-    color: $monoSecondary;
-    font-size: 18px;
-    font-weight: 600;
+    display: flex;
     margin-bottom: 5px;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;      
+    }
+
+    .time-start {
+      color: $monoSecondary;   
+      min-width: 45px;   
+      text-align: center;
+      margin-right: 4px;
+    }
+    
+    .time-end {
+      color: $monoTinted;
+      min-width: 45px;   
+      text-align: center;
+    }
   }
 }

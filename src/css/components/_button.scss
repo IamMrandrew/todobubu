@@ -14,7 +14,9 @@
 
 .addtask {
   position: fixed;
-  bottom: 38px;
+  bottom: 0;
   left: 0px;
   right: 0px;    
+  background-color: $white;
+  height: 88px;
 }
