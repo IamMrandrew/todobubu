@@ -6,13 +6,22 @@ import Popup from './components/Popup'
 import { useState } from 'react';
 
 function App() {
-  let todos = [{title: "Cook breakfast", desc: "Sausages, milk", start: "0900", end: "1000", complete: false}, 
-  {title: "Learn React", desc: "React router, hooks, states", start: "1000", end: "1130", complete: false}, 
-  {title: "Play chess (1 - 10)", desc: "Need up platinum today", start: "0830", end: "1130", complete: false}];
-
   const [popup, setPopup] = useState(false);
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputStart, setInputStart] = useState("");
+  const [inputEnd, setInputEnd] = useState("");
+  const [inputDesc, setInputDesc] = useState("");
+  const [todos, setTodos] = useState([]);
+
   const popupHandler = () => {
     setPopup(!popup);
+  }
+  const createTodoHandler = () => {
+    setTodos([...todos, {title: inputTitle, desc: inputDesc, start: inputStart, end: inputEnd}]);
+    setInputTitle("");
+    setInputDesc("");
+    setInputStart("");
+    setInputEnd("");
   }
 
   return (
@@ -21,12 +30,23 @@ function App() {
       <Status num={todos.length} />
       {todos.map(todo => (
         <Timeslot key={todo.title} todo={todo} />
-      ))}      
+      ))}
       <div className="container addTodo">
-        <Button action={popupHandler} text="Add Todo"/>
+        <Button action={popupHandler} text="Add Todo" />
       </div>
-      <Popup popup={popup} />
-      <div onClick={popupHandler} className={popup ? "popup-bg active" : "popup-bg"}></div>
+      <Popup 
+        createTodoHandler={createTodoHandler} 
+        popup={popup} 
+        popupHandler={popupHandler} 
+        inputTitle={inputTitle}
+        setInputTitle={setInputTitle} 
+        inputStart={inputStart}
+        setInputStart={setInputStart} 
+        inputEnd={inputEnd}
+        setInputEnd={setInputEnd} 
+        inputDesc={inputDesc}
+        setInputDesc={setInputDesc}         
+      />
       <div className="bottom"></div>      
     </div>
     </div>

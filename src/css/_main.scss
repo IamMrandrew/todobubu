@@ -5,8 +5,16 @@
 }
 
 .main {
+  height: calc(100vh - 88px);  
   padding: 0px 20px;
-  margin-top: 60px;   
+  padding-top: 60px;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */   
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
 }
 
 .status {
