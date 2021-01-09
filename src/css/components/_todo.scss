@@ -1,0 +1,20 @@
+.todo {
+  padding: 18px 20px;
+  margin-bottom: 8px;
+  background-color: $background;
+  border-radius: 18px;
+
+  .todo-title {
+    color: $primaryShaded;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;    
+  }
+  
+  .todo-desc {
+    color: $primaryMuted;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+}

@@ -1,0 +1,20 @@
+.button {
+  appearance: none;
+  outline: none;
+  border: none;
+
+  width: 100%;
+  padding: 17px;
+  border-radius: 18px;
+  background-color: $primary;
+  color: $white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.addtask {
+  position: fixed;
+  bottom: 38px;
+  left: 0px;
+  right: 0px;    
+}

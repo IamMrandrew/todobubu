@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Todo from './components/Todo';
+import Timeslot from './components/Timeslot';
+import Button from './components/Button';
+import Status from './components/Status';
 
 function App() {
+  let tasks = [{title: "Cook breakfast", desc: "Sausages, milk", start: 9, end: 10, complete: false}, 
+  {title: "Cook breakfast", desc: "Sausages, milk", start: 9, end: 10, complete: false}];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container main">
+      <Status num={tasks.length} />
+      <Timeslot tasks={tasks} />
+      <div className="container addtask">
+        <Button />
+      </div>      
+    </div>
     </div>
   );
 }
