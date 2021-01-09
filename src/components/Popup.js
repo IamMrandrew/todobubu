@@ -17,7 +17,7 @@ const Popup = ({createTodoHandler, popup, popupHandler, inputTitle, setInputTitl
 
   return (    
     <div className="popup">
-      <div className={popup ? "popup-content active" : "popup-content"}>
+      <form className={popup ? "popup-content active" : "popup-content"}>
         <textarea onChange={inputTitleHandler} className="input-title" placeholder="Sleep all day? Fail to wake ..." value={inputTitle} rows="2"></textarea>
         <div className="field-wrap">
           <div className="field-start">
@@ -32,7 +32,7 @@ const Popup = ({createTodoHandler, popup, popupHandler, inputTitle, setInputTitl
         <p className="label-desc">Descriptions</p>
         <textarea onChange={inputDescHandler} className="input-desc" placeholder="Apple, Banana, Carrot ..." value={inputDesc} rows="5"></textarea>
         <Button action={createTodoHandler} text="Create" />
-      </div>
+      </form>
       <div onClick={popupHandler} className={popup ? "popup-bg active" : "popup-bg"}></div>
     </div>
   )

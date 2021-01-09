@@ -17,13 +17,15 @@ function App() {
   const popupHandler = () => {
     setPopup(!popup);
   }
-  const createTodoHandler = () => {
-    setTodos([...todos, {title: inputTitle, desc: inputDesc, start: inputStart, end: inputEnd}]);
+  const createTodoHandler = (e) => {
+    e.preventDefault()
+    setTodos([...todos, {title: inputTitle, desc: inputDesc? inputDesc : "Nothing special ...", start: inputStart, end: inputEnd}]);
     setInputTitle("");
     setInputDesc("");
     setInputStart("");
     setInputEnd("");
     setPopup(!popup);
+
   }
 
   useEffect(() => {
