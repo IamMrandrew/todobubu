@@ -3,7 +3,7 @@ import Timeslot from './components/Timeslot';
 import Button from './components/Button';
 import Status from './components/Status';
 import Popup from './components/Popup'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [popup, setPopup] = useState(false);
@@ -12,6 +12,7 @@ function App() {
   const [inputEnd, setInputEnd] = useState("");
   const [inputDesc, setInputDesc] = useState("");
   const [todos, setTodos] = useState([]);
+  const [sortedTodos, setSortedTodos] = useState([]);
 
   const popupHandler = () => {
     setPopup(!popup);
@@ -22,13 +23,22 @@ function App() {
     setInputDesc("");
     setInputStart("");
     setInputEnd("");
+    setPopup(!popup);
   }
+
+  useEffect(() => {
+    function compare(a, b) {
+      return Number(a.start) - Number(b.start)
+    }
+    console.log("ji")
+    setSortedTodos(todos.sort(compare));
+  }, [todos])
 
   return (
     <div className="App">
     <div className="container main">
       <Status num={todos.length} />
-      {todos.map(todo => (
+      {sortedTodos.map(todo => (
         <Timeslot key={todo.title} todo={todo} />
       ))}
       <div className="container addTodo">
@@ -45,7 +55,7 @@ function App() {
         inputEnd={inputEnd}
         setInputEnd={setInputEnd} 
         inputDesc={inputDesc}
-        setInputDesc={setInputDesc}         
+        setInputDesc={setInputDesc}      
       />
       <div className="bottom"></div>      
     </div>
