@@ -1,9 +1,9 @@
-import './App.css';
-import Timeslot from './components/Timeslot';
-import Button from './components/Button';
-import Status from './components/Status';
-import Popup from './components/Popup'
-import { useState, useEffect } from 'react';
+import "./App.css";
+import Timeslot from "./components/Timeslot";
+import Button from "./components/Button";
+import Status from "./components/Status";
+import Popup from "./components/Popup";
+import { useState, useEffect } from "react";
 
 function App() {
   const [popup, setPopup] = useState(false);
@@ -16,51 +16,70 @@ function App() {
 
   const popupHandler = () => {
     setPopup(!popup);
-  }
+  };
   const createTodoHandler = (e) => {
-    e.preventDefault()
-    setTodos([...todos, {title: inputTitle, desc: inputDesc? inputDesc : "Nothing special ...", start: inputStart, end: inputEnd}]);
+    e.preventDefault();
+    setTodos([
+      ...todos,
+      {
+        title: inputTitle,
+        desc: inputDesc ? inputDesc : "Nothing special ...",
+        start: inputStart,
+        end: inputEnd,
+      },
+    ]);
     setInputTitle("");
     setInputDesc("");
     setInputStart("");
     setInputEnd("");
     setPopup(!popup);
-
-  }
+  };
 
   useEffect(() => {
     function compare(a, b) {
-      return Number(a.start) - Number(b.start)
+      return Number(a.start) - Number(b.start);
     }
-    console.log("ji")
     setSortedTodos(todos.sort(compare));
-  }, [todos])
+    setCurrentTime();
+  }, [todos]);
+
+  const setCurrentTime = () => {
+    const duration = 30;
+    const time = new Date();
+    const start = time.getHours().toString() + time.getMinutes().toString();
+    const durationTime = new Date(time.getTime() + duration * 1000 * 60);
+    const end =
+      durationTime.getHours().toString().padStart(2, "0") +
+      durationTime.getMinutes().toString().padStart(2, "0");
+    setInputStart(start);
+    setInputEnd(end);
+  };
 
   return (
     <div className="App">
-    <div className="container main">
-      <Status num={todos.length} />
-      {sortedTodos.map(todo => (
-        <Timeslot key={todo.title} todo={todo} />
-      ))}
-      <div className="container addTodo">
-        <Button action={popupHandler} text="Add Todo" />
+      <div className="container main">
+        <Status num={todos.length} />
+        {sortedTodos.map((todo) => (
+          <Timeslot key={todo.title} todo={todo} />
+        ))}
+        <div className="container addTodo">
+          <Button action={popupHandler} text="Add Todo" />
+        </div>
+        <Popup
+          createTodoHandler={createTodoHandler}
+          popup={popup}
+          popupHandler={popupHandler}
+          inputTitle={inputTitle}
+          setInputTitle={setInputTitle}
+          inputStart={inputStart}
+          setInputStart={setInputStart}
+          inputEnd={inputEnd}
+          setInputEnd={setInputEnd}
+          inputDesc={inputDesc}
+          setInputDesc={setInputDesc}
+        />
+        <div className="bottom"></div>
       </div>
-      <Popup 
-        createTodoHandler={createTodoHandler} 
-        popup={popup} 
-        popupHandler={popupHandler} 
-        inputTitle={inputTitle}
-        setInputTitle={setInputTitle} 
-        inputStart={inputStart}
-        setInputStart={setInputStart} 
-        inputEnd={inputEnd}
-        setInputEnd={setInputEnd} 
-        inputDesc={inputDesc}
-        setInputDesc={setInputDesc}      
-      />
-      <div className="bottom"></div>      
-    </div>
     </div>
   );
 }
