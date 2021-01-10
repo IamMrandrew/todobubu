@@ -99,7 +99,10 @@ const Popup = ({
           value={inputDesc}
           rows="5"
         ></textarea>
-        <Button action={createTodoHandler} text="Create" />
+        <Button
+          action={inputTitle ? createTodoHandler : popupHandler}
+          text={inputTitle ? "Create" : "Cancel"}
+        />
       </form>
       <div
         onClick={popupHandler}

@@ -3,18 +3,76 @@
   margin-bottom: 8px;
   background-color: $background;
   border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease-out;
+
+  &.completed {
+    animation: todoCompleted 2s ease-out forwards;
+  }
 
   .todo-title {
     color: $primaryShaded;
     font-weight: 600;
     font-size: 18px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;
+    transition: all 0.5s ease-out;
+
+    &.completed {
+      color: $monoSecondary;
+    }
   }
-  
+
   .todo-desc {
     color: $primaryMuted;
     font-weight: 600;
     font-size: 15px;
+    transition: all 0.5s ease-out;
+
+    &.completed {
+      color: $monoTinted;
+    }
   }
-  
+
+  .todo-complete {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 3px solid $white;
+    background-color: none;
+    box-shadow: 0 0 0 4px $primary;
+    transition: all 0.5s ease-out;
+
+    &.completed {
+      animation: todoCompleteCompleted 2s ease-out forwards;
+    }
+
+    @keyframes todoCompleteCompleted {
+      0% {
+        background-color: none;
+        box-shadow: 0 0 0 4px $primary;
+      }
+      33% {
+        background-color: $primary;
+        box-shadow: 0 0 0 4px $primary;
+      }
+      100% {
+        background-color: $monoSecondary;
+        box-shadow: 0 0 0 4px $monoSecondary;
+      }
+    }
+
+    @keyframes todoCompleted {
+      0% {
+        background-color: $background;
+      }
+      33% {
+        background-color: $background;
+      }
+      100% {
+        background-color: #f4f4f4;
+      }
+    }
+  }
 }

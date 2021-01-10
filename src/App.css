@@ -664,8 +664,24 @@ html {
 .todo {
   padding: 18px 20px;
   margin-bottom: 8px;
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   border-radius: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.todo.completed {
+  -webkit-animation: todoCompleted 2s ease-out forwards;
+          animation: todoCompleted 2s ease-out forwards;
 }
 
 .todo .todo-title {
@@ -673,12 +689,101 @@ html {
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 5px;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.todo .todo-title.completed {
+  color: #707070;
 }
 
 .todo .todo-desc {
   color: #b5c1de;
   font-weight: 600;
   font-size: 15px;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.todo .todo-desc.completed {
+  color: #b7b7b7;
+}
+
+.todo .todo-complete {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  background-color: none;
+  -webkit-box-shadow: 0 0 0 4px #a9bcee;
+          box-shadow: 0 0 0 4px #a9bcee;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.todo .todo-complete.completed {
+  -webkit-animation: todoCompleteCompleted 2s ease-out forwards;
+          animation: todoCompleteCompleted 2s ease-out forwards;
+}
+
+@-webkit-keyframes todoCompleteCompleted {
+  0% {
+    background-color: none;
+    -webkit-box-shadow: 0 0 0 4px #a9bcee;
+            box-shadow: 0 0 0 4px #a9bcee;
+  }
+  33% {
+    background-color: #a9bcee;
+    -webkit-box-shadow: 0 0 0 4px #a9bcee;
+            box-shadow: 0 0 0 4px #a9bcee;
+  }
+  100% {
+    background-color: #707070;
+    -webkit-box-shadow: 0 0 0 4px #707070;
+            box-shadow: 0 0 0 4px #707070;
+  }
+}
+
+@keyframes todoCompleteCompleted {
+  0% {
+    background-color: none;
+    -webkit-box-shadow: 0 0 0 4px #a9bcee;
+            box-shadow: 0 0 0 4px #a9bcee;
+  }
+  33% {
+    background-color: #a9bcee;
+    -webkit-box-shadow: 0 0 0 4px #a9bcee;
+            box-shadow: 0 0 0 4px #a9bcee;
+  }
+  100% {
+    background-color: #707070;
+    -webkit-box-shadow: 0 0 0 4px #707070;
+            box-shadow: 0 0 0 4px #707070;
+  }
+}
+
+@-webkit-keyframes todoCompleted {
+  0% {
+    background-color: #fafafa;
+  }
+  33% {
+    background-color: #fafafa;
+  }
+  100% {
+    background-color: #f4f4f4;
+  }
+}
+
+@keyframes todoCompleted {
+  0% {
+    background-color: #fafafa;
+  }
+  33% {
+    background-color: #fafafa;
+  }
+  100% {
+    background-color: #f4f4f4;
+  }
 }
 
 .timeslot .time {
@@ -748,7 +853,7 @@ html {
 }
 
 .popup .popup-content .input-title {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   border: none;
   outline: none;
   border-radius: 20px;
@@ -828,7 +933,7 @@ html {
 
 .popup .popup-content .field-wrap .field-start .wrapper .button-duration,
 .popup .popup-content .field-wrap .field-end .wrapper .button-duration {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   padding: 7px 9px;
   border-radius: 6px;
   margin-right: 6px;
@@ -847,7 +952,7 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start,
 .popup .popup-content .field-wrap .field-end .input-end,
 .popup .popup-content .field-wrap .field-end .input-dur {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   border: none;
   outline: none;
   border-radius: 10px;
@@ -922,7 +1027,7 @@ html {
 
 .popup .popup-content .field-wrap .field-start .duration-unit,
 .popup .popup-content .field-wrap .field-end .duration-unit {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   padding: 6px 9px;
   padding-bottom: 10px;
   border-radius: 10px;
@@ -945,7 +1050,7 @@ html {
 }
 
 .popup .popup-content .input-desc {
-  background-color: #f9f9f9;
+  background-color: #fafafa;
   border: none;
   outline: none;
   border-radius: 20px;

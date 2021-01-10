@@ -16,11 +16,13 @@ function App() {
   const [sortedTodos, setSortedTodos] = useState([]);
   const [durationText, setDurationText] = useState(false);
 
-  const popupHandler = () => {
+  const popupHandler = (e) => {
+    e.preventDefault();
     setPopup(!popup);
   };
   const createTodoHandler = (e) => {
     e.preventDefault();
+
     let inputEndDur;
     if (durationText) {
       const hours = inputStart.substring(0, 2);
@@ -45,10 +47,12 @@ function App() {
     setTodos([
       ...todos,
       {
+        id: Date.now(),
         title: inputTitle,
         desc: inputDesc ? inputDesc : "Nothing special ...",
         start: inputStart,
         end: durationText ? inputEndDur : inputEnd,
+        complete: false,
       },
     ]);
     setInputTitle("");
@@ -87,7 +91,12 @@ function App() {
       <div className="container main">
         <Status num={todos.length} />
         {sortedTodos.map((todo) => (
-          <Timeslot key={todo.title} todo={todo} />
+          <Timeslot
+            key={todo.id}
+            todo={todo}
+            todos={todos}
+            setTodos={setTodos}
+          />
         ))}
         <div className="container addTodo">
           <Button action={popupHandler} text="Add Todo" />

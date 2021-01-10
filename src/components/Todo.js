@@ -1,13 +1,36 @@
-import React from 'react';
+import React from "react";
 
-const Todo = ({todo}) => {
+const Todo = ({ todo, todos, setTodos }) => {
+  const completeHandler = () => {
+    setTodos(
+      todos.map((item) => {
+        if (item.id === todo.id) {
+          return {
+            ...item,
+            complete: !item.complete,
+          };
+        }
+        return item;
+      })
+    );
+  };
+
   return (
-    <div className="todo">
-      <h3 className="todo-title">{todo.title}</h3>
-      <p className="todo-desc">{todo.desc}</p>
-      <div className="todo-complete"></div>
+    <div className={todo.complete ? "todo completed" : "todo"}>
+      <div className="wrapper">
+        <h3 className={todo.complete ? "todo-title completed" : "todo-title"}>
+          {todo.title}
+        </h3>
+        <p className={todo.complete ? "todo-desc completed" : "todo-desc"}>
+          {todo.desc}
+        </p>
+      </div>
+      <div
+        onClick={completeHandler}
+        className={todo.complete ? "todo-complete completed" : "todo-complete"}
+      ></div>
     </div>
-  )
-}
+  );
+};
 
 export default Todo;
