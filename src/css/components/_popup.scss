@@ -23,7 +23,7 @@
       font-weight: 600;
       font-size: 18px;
       font-family: "Barlow", "Open Sans", sans-serif;
-      color: $primary;
+      color: $primaryShaded;
       resize: none;
 
       &::placeholder {
@@ -62,9 +62,10 @@
             padding: 7px 9px;
             border-radius: 6px;
             margin-right: 6px;
+            cursor: pointer;
 
             .icon {
-              color: $primaryMuted;
+              color: $primary;
               font-size: 19px;
             }
           }
@@ -79,7 +80,7 @@
           border-radius: 10px;
           padding: 6px 15px;
           font-size: 18px;
-          color: $primaryMuted;
+          color: $primary;
           font-weight: 600;
           max-width: 75px;
 
@@ -103,7 +104,7 @@
           padding: 6px 9px;
           padding-bottom: 10px;
           border-radius: 10px;
-          color: $primaryMuted;
+          color: $primary;
           font-weight: 600;
           font-size: 18px;
           opacity: 0;
@@ -134,7 +135,7 @@
       font-weight: 600;
       font-size: 18px;
       font-family: "Barlow", "Open Sans", sans-serif;
-      color: $primary;
+      color: $primaryMuted;
       resize: none;
 
       &::placeholder {

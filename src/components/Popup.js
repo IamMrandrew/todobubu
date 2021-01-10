@@ -53,7 +53,10 @@ const Popup = ({
             <input
               onChange={inputStartHandler}
               className="input-start"
-              placeholder="0900"
+              placeholder={
+                new Date().getHours().toString() +
+                new Date().getMinutes().toString()
+              }
               value={inputStart}
               type="text"
               maxLength="4"
@@ -73,7 +76,7 @@ const Popup = ({
               <input
                 onChange={durationText ? inputDurHandler : inputEndHandler}
                 className={durationText ? "input-dur" : "input-end"}
-                placeholder="1000"
+                placeholder={durationText ? "30" : "1000"}
                 value={durationText ? inputDur : inputEnd}
                 type="text"
                 maxLength="4"

@@ -664,19 +664,19 @@ html {
 .todo {
   padding: 18px 20px;
   margin-bottom: 8px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border-radius: 18px;
 }
 
 .todo .todo-title {
-  color: #414F75;
+  color: #414f75;
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 5px;
 }
 
 .todo .todo-desc {
-  color: #B5BED6;
+  color: #b5c1de;
   font-weight: 600;
   font-size: 15px;
 }
@@ -701,7 +701,7 @@ html {
 }
 
 .timeslot .time .time-end {
-  color: #B7B7B7;
+  color: #b7b7b7;
   min-width: 45px;
   text-align: center;
 }
@@ -715,8 +715,8 @@ html {
   width: 100%;
   padding: 17px;
   border-radius: 18px;
-  background-color: #BDC9E7;
-  color: #FFFFFF;
+  background-color: #a9bcee;
+  color: #ffffff;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
@@ -727,12 +727,12 @@ html {
   bottom: 0;
   left: 0px;
   right: 0px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 88px;
 }
 
 .popup .popup-content {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -748,7 +748,7 @@ html {
 }
 
 .popup .popup-content .input-title {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border: none;
   outline: none;
   border-radius: 20px;
@@ -758,34 +758,34 @@ html {
   font-weight: 600;
   font-size: 18px;
   font-family: "Barlow", "Open Sans", sans-serif;
-  color: #BDC9E7;
+  color: #414f75;
   resize: none;
 }
 
 .popup .popup-content .input-title::-webkit-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-title:-ms-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-title::-ms-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-title::placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-title::-moz-selection {
-  background: #BDC9E7;
-  color: #FFFFFF;
+  background: #a9bcee;
+  color: #ffffff;
 }
 
 .popup .popup-content .input-title::selection {
-  background: #BDC9E7;
-  color: #FFFFFF;
+  background: #a9bcee;
+  color: #ffffff;
 }
 
 .popup .popup-content .field-wrap {
@@ -828,15 +828,16 @@ html {
 
 .popup .popup-content .field-wrap .field-start .wrapper .button-duration,
 .popup .popup-content .field-wrap .field-end .wrapper .button-duration {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   padding: 7px 9px;
   border-radius: 6px;
   margin-right: 6px;
+  cursor: pointer;
 }
 
 .popup .popup-content .field-wrap .field-start .wrapper .button-duration .icon,
 .popup .popup-content .field-wrap .field-end .wrapper .button-duration .icon {
-  color: #B5BED6;
+  color: #a9bcee;
   font-size: 19px;
 }
 
@@ -846,13 +847,13 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start,
 .popup .popup-content .field-wrap .field-end .input-end,
 .popup .popup-content .field-wrap .field-end .input-dur {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border: none;
   outline: none;
   border-radius: 10px;
   padding: 6px 15px;
   font-size: 18px;
-  color: #B5BED6;
+  color: #a9bcee;
   font-weight: 600;
   max-width: 75px;
 }
@@ -863,7 +864,7 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start::-webkit-input-placeholder,
 .popup .popup-content .field-wrap .field-end .input-end::-webkit-input-placeholder,
 .popup .popup-content .field-wrap .field-end .input-dur::-webkit-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .field-wrap .field-start .input-start:-ms-input-placeholder,
@@ -872,7 +873,7 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start:-ms-input-placeholder,
 .popup .popup-content .field-wrap .field-end .input-end:-ms-input-placeholder,
 .popup .popup-content .field-wrap .field-end .input-dur:-ms-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .field-wrap .field-start .input-start::-ms-input-placeholder,
@@ -881,7 +882,7 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start::-ms-input-placeholder,
 .popup .popup-content .field-wrap .field-end .input-end::-ms-input-placeholder,
 .popup .popup-content .field-wrap .field-end .input-dur::-ms-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .field-wrap .field-start .input-start::placeholder,
@@ -890,7 +891,7 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start::placeholder,
 .popup .popup-content .field-wrap .field-end .input-end::placeholder,
 .popup .popup-content .field-wrap .field-end .input-dur::placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .field-wrap .field-start .input-start::-moz-selection,
@@ -899,8 +900,8 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start::-moz-selection,
 .popup .popup-content .field-wrap .field-end .input-end::-moz-selection,
 .popup .popup-content .field-wrap .field-end .input-dur::-moz-selection {
-  background: #BDC9E7;
-  color: #FFFFFF;
+  background: #a9bcee;
+  color: #ffffff;
 }
 
 .popup .popup-content .field-wrap .field-start .input-start::selection,
@@ -909,8 +910,8 @@ html {
 .popup .popup-content .field-wrap .field-end .input-start::selection,
 .popup .popup-content .field-wrap .field-end .input-end::selection,
 .popup .popup-content .field-wrap .field-end .input-dur::selection {
-  background: #BDC9E7;
-  color: #FFFFFF;
+  background: #a9bcee;
+  color: #ffffff;
 }
 
 .popup .popup-content .field-wrap .field-start .input-dur,
@@ -921,11 +922,11 @@ html {
 
 .popup .popup-content .field-wrap .field-start .duration-unit,
 .popup .popup-content .field-wrap .field-end .duration-unit {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   padding: 6px 9px;
   padding-bottom: 10px;
   border-radius: 10px;
-  color: #B5BED6;
+  color: #a9bcee;
   font-weight: 600;
   font-size: 18px;
   opacity: 0;
@@ -944,7 +945,7 @@ html {
 }
 
 .popup .popup-content .input-desc {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   border: none;
   outline: none;
   border-radius: 20px;
@@ -954,34 +955,34 @@ html {
   font-weight: 600;
   font-size: 18px;
   font-family: "Barlow", "Open Sans", sans-serif;
-  color: #BDC9E7;
+  color: #b5c1de;
   resize: none;
 }
 
 .popup .popup-content .input-desc::-webkit-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-desc:-ms-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-desc::-ms-input-placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-desc::placeholder {
-  color: #B7B7B7;
+  color: #b7b7b7;
 }
 
 .popup .popup-content .input-desc::-moz-selection {
-  background: #BDC9E7;
-  color: #FFFFFF;
+  background: #a9bcee;
+  color: #ffffff;
 }
 
 .popup .popup-content .input-desc::selection {
-  background: #BDC9E7;
-  color: #FFFFFF;
+  background: #a9bcee;
+  color: #ffffff;
 }
 
 .popup .popup-content.active {
@@ -1042,14 +1043,14 @@ html {
 }
 
 .status .main-status {
-  color: #3D3D3D;
+  color: #3d3d3d;
   font-size: 42px;
   font-weight: 700;
   margin-right: 15px;
 }
 
 .status .tasks-status {
-  color: #B7B7B7;
+  color: #b7b7b7;
   font-size: 18px;
   font-weight: 600;
 }
