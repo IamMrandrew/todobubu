@@ -63,7 +63,6 @@ function App() {
       return Number(a.start) - Number(b.start);
     }
     setSortedTodos(todos.sort(compare));
-    // setCurrentTime();
   }, [todos]);
 
   useEffect(() => {
@@ -72,7 +71,9 @@ function App() {
   const setCurrentTime = () => {
     const duration = 30;
     const time = new Date();
-    const start = time.getHours().toString() + time.getMinutes().toString();
+    const start =
+      time.getHours().toString().padStart(2, "0") +
+      time.getMinutes().toString().padStart(2, "0");
     const durationTime = new Date(time.getTime() + duration * 1000 * 60);
     const end =
       durationTime.getHours().toString().padStart(2, "0") +
