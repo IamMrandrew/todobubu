@@ -17,7 +17,7 @@
       border: none;
       outline: none;
       border-radius: 20px;
-      padding: 20px;    
+      padding: 20px;
       width: 100%;
       margin-bottom: 20px;
       font-weight: 600;
@@ -37,20 +37,42 @@
     }
 
     .field-wrap {
-      display: flex;    
+      display: flex;
       align-items: center;
       margin-bottom: 25px;
 
-      .field-start, .field-end {
-        flex-basis: 50%;      
-        
-        .label-start, .label-end {
+      .field-start,
+      .field-end {
+        flex-basis: 50%;
+
+        .label-start,
+        .label-end {
           margin-bottom: 6px;
           color: $monoSecondary;
           font-weight: 600;
         }
 
-        .input-start, .input-end {
+        .wrapper {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          .button-duration {
+            background-color: $background;
+            padding: 7px 9px;
+            border-radius: 6px;
+            margin-right: 6px;
+
+            .icon {
+              color: $primaryMuted;
+              font-size: 19px;
+            }
+          }
+        }
+
+        .input-start,
+        .input-end,
+        .input-dur {
           background-color: $background;
           border: none;
           outline: none;
@@ -59,7 +81,7 @@
           font-size: 18px;
           color: $primaryMuted;
           font-weight: 600;
-          max-width: 70px;
+          max-width: 75px;
 
           &::placeholder {
             color: $monoTinted;
@@ -70,9 +92,30 @@
             color: $white;
           }
         }
+
+        .input-dur {
+          max-width: 60px;
+          margin-right: 5px;
+        }
+
+        .duration-unit {
+          background-color: $background;
+          padding: 6px 9px;
+          padding-bottom: 10px;
+          border-radius: 10px;
+          color: $primaryMuted;
+          font-weight: 600;
+          font-size: 18px;
+          opacity: 0;
+          // transition: all 0.3s;
+
+          &.active {
+            opacity: 1;
+          }
+        }
       }
     }
-    
+
     .label-desc {
       font-size: 16px;
       margin-bottom: 6px;
@@ -85,7 +128,7 @@
       border: none;
       outline: none;
       border-radius: 20px;
-      padding: 20px;    
+      padding: 20px;
       width: 100%;
       margin-bottom: 20px;
       font-weight: 600;
@@ -109,7 +152,7 @@
     opacity: 1;
     transform: translateY(0);
   }
-  
+
   .popup-bg {
     background-color: rgba(0, 0, 0, 0.15);
     height: 100vh;
@@ -122,7 +165,7 @@
     pointer-events: none;
     transition: all 0.3s ease-out;
   }
-  
+
   .popup-bg.active {
     opacity: 1;
     pointer-events: all;

@@ -798,18 +798,54 @@ html {
   margin-bottom: 25px;
 }
 
-.popup .popup-content .field-wrap .field-start, .popup .popup-content .field-wrap .field-end {
+.popup .popup-content .field-wrap .field-start,
+.popup .popup-content .field-wrap .field-end {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
 }
 
-.popup .popup-content .field-wrap .field-start .label-start, .popup .popup-content .field-wrap .field-start .label-end, .popup .popup-content .field-wrap .field-end .label-start, .popup .popup-content .field-wrap .field-end .label-end {
+.popup .popup-content .field-wrap .field-start .label-start,
+.popup .popup-content .field-wrap .field-start .label-end,
+.popup .popup-content .field-wrap .field-end .label-start,
+.popup .popup-content .field-wrap .field-end .label-end {
   margin-bottom: 6px;
   color: #707070;
   font-weight: 600;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start, .popup .popup-content .field-wrap .field-start .input-end, .popup .popup-content .field-wrap .field-end .input-start, .popup .popup-content .field-wrap .field-end .input-end {
+.popup .popup-content .field-wrap .field-start .wrapper,
+.popup .popup-content .field-wrap .field-end .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup .popup-content .field-wrap .field-start .wrapper .button-duration,
+.popup .popup-content .field-wrap .field-end .wrapper .button-duration {
+  background-color: #F9F9F9;
+  padding: 7px 9px;
+  border-radius: 6px;
+  margin-right: 6px;
+}
+
+.popup .popup-content .field-wrap .field-start .wrapper .button-duration .icon,
+.popup .popup-content .field-wrap .field-end .wrapper .button-duration .icon {
+  color: #B5BED6;
+  font-size: 19px;
+}
+
+.popup .popup-content .field-wrap .field-start .input-start,
+.popup .popup-content .field-wrap .field-start .input-end,
+.popup .popup-content .field-wrap .field-start .input-dur,
+.popup .popup-content .field-wrap .field-end .input-start,
+.popup .popup-content .field-wrap .field-end .input-end,
+.popup .popup-content .field-wrap .field-end .input-dur {
   background-color: #F9F9F9;
   border: none;
   outline: none;
@@ -818,33 +854,86 @@ html {
   font-size: 18px;
   color: #B5BED6;
   font-weight: 600;
-  max-width: 70px;
+  max-width: 75px;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start::-webkit-input-placeholder, .popup .popup-content .field-wrap .field-start .input-end::-webkit-input-placeholder, .popup .popup-content .field-wrap .field-end .input-start::-webkit-input-placeholder, .popup .popup-content .field-wrap .field-end .input-end::-webkit-input-placeholder {
+.popup .popup-content .field-wrap .field-start .input-start::-webkit-input-placeholder,
+.popup .popup-content .field-wrap .field-start .input-end::-webkit-input-placeholder,
+.popup .popup-content .field-wrap .field-start .input-dur::-webkit-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-start::-webkit-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-end::-webkit-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-dur::-webkit-input-placeholder {
   color: #B7B7B7;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start:-ms-input-placeholder, .popup .popup-content .field-wrap .field-start .input-end:-ms-input-placeholder, .popup .popup-content .field-wrap .field-end .input-start:-ms-input-placeholder, .popup .popup-content .field-wrap .field-end .input-end:-ms-input-placeholder {
+.popup .popup-content .field-wrap .field-start .input-start:-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-start .input-end:-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-start .input-dur:-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-start:-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-end:-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-dur:-ms-input-placeholder {
   color: #B7B7B7;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start::-ms-input-placeholder, .popup .popup-content .field-wrap .field-start .input-end::-ms-input-placeholder, .popup .popup-content .field-wrap .field-end .input-start::-ms-input-placeholder, .popup .popup-content .field-wrap .field-end .input-end::-ms-input-placeholder {
+.popup .popup-content .field-wrap .field-start .input-start::-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-start .input-end::-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-start .input-dur::-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-start::-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-end::-ms-input-placeholder,
+.popup .popup-content .field-wrap .field-end .input-dur::-ms-input-placeholder {
   color: #B7B7B7;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start::placeholder, .popup .popup-content .field-wrap .field-start .input-end::placeholder, .popup .popup-content .field-wrap .field-end .input-start::placeholder, .popup .popup-content .field-wrap .field-end .input-end::placeholder {
+.popup .popup-content .field-wrap .field-start .input-start::placeholder,
+.popup .popup-content .field-wrap .field-start .input-end::placeholder,
+.popup .popup-content .field-wrap .field-start .input-dur::placeholder,
+.popup .popup-content .field-wrap .field-end .input-start::placeholder,
+.popup .popup-content .field-wrap .field-end .input-end::placeholder,
+.popup .popup-content .field-wrap .field-end .input-dur::placeholder {
   color: #B7B7B7;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start::-moz-selection, .popup .popup-content .field-wrap .field-start .input-end::-moz-selection, .popup .popup-content .field-wrap .field-end .input-start::-moz-selection, .popup .popup-content .field-wrap .field-end .input-end::-moz-selection {
+.popup .popup-content .field-wrap .field-start .input-start::-moz-selection,
+.popup .popup-content .field-wrap .field-start .input-end::-moz-selection,
+.popup .popup-content .field-wrap .field-start .input-dur::-moz-selection,
+.popup .popup-content .field-wrap .field-end .input-start::-moz-selection,
+.popup .popup-content .field-wrap .field-end .input-end::-moz-selection,
+.popup .popup-content .field-wrap .field-end .input-dur::-moz-selection {
   background: #BDC9E7;
   color: #FFFFFF;
 }
 
-.popup .popup-content .field-wrap .field-start .input-start::selection, .popup .popup-content .field-wrap .field-start .input-end::selection, .popup .popup-content .field-wrap .field-end .input-start::selection, .popup .popup-content .field-wrap .field-end .input-end::selection {
+.popup .popup-content .field-wrap .field-start .input-start::selection,
+.popup .popup-content .field-wrap .field-start .input-end::selection,
+.popup .popup-content .field-wrap .field-start .input-dur::selection,
+.popup .popup-content .field-wrap .field-end .input-start::selection,
+.popup .popup-content .field-wrap .field-end .input-end::selection,
+.popup .popup-content .field-wrap .field-end .input-dur::selection {
   background: #BDC9E7;
   color: #FFFFFF;
+}
+
+.popup .popup-content .field-wrap .field-start .input-dur,
+.popup .popup-content .field-wrap .field-end .input-dur {
+  max-width: 60px;
+  margin-right: 5px;
+}
+
+.popup .popup-content .field-wrap .field-start .duration-unit,
+.popup .popup-content .field-wrap .field-end .duration-unit {
+  background-color: #F9F9F9;
+  padding: 6px 9px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  color: #B5BED6;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0;
+}
+
+.popup .popup-content .field-wrap .field-start .duration-unit.active,
+.popup .popup-content .field-wrap .field-end .duration-unit.active {
+  opacity: 1;
 }
 
 .popup .popup-content .label-desc {
