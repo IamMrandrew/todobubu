@@ -20,6 +20,7 @@ function App() {
   const [menu, setMenu] = useState(false);
   const [edit, setEdit] = useState(false);
   const [currentTodo, setCurrentTodo] = useState(0);
+  const [delay, setDelay] = useState(0);
 
   const popupHandler = (e) => {
     e.preventDefault();
@@ -182,6 +183,8 @@ function App() {
           currentTodo={currentTodo}
           todos={todos}
           setTodos={setTodos}
+          delay={delay}
+          setDelay={setDelay}
         />
         <div className="bottom"></div>
       </div>

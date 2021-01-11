@@ -1265,7 +1265,7 @@ html {
           align-items: center;
 }
 
-.edit .edit-content .field-wrap .button-duration {
+.edit .edit-content .field-wrap .button-delay {
   background-color: #fafafa;
   padding: 7px 9px;
   border-radius: 6px;
@@ -1273,7 +1273,7 @@ html {
   cursor: pointer;
 }
 
-.edit .edit-content .field-wrap .button-duration .icon {
+.edit .edit-content .field-wrap .button-delay .icon {
   color: #a9bcee;
   font-size: 19px;
 }
@@ -1288,6 +1288,7 @@ html {
   color: #a9bcee;
   font-weight: 600;
   max-width: 60px;
+  margin-right: 5px;
 }
 
 .edit .edit-content .field-wrap .input-delay::-webkit-input-placeholder {

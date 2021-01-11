@@ -47,7 +47,7 @@
       justify-content: flex-start;
       align-items: center;
 
-      .button-duration {
+      .button-delay {
         background-color: $background;
         padding: 7px 9px;
         border-radius: 6px;
@@ -70,6 +70,7 @@
         color: $primary;
         font-weight: 600;
         max-width: 60px;
+        margin-right: 5px;
 
         &::placeholder {
           color: $monoTinted;

@@ -23,6 +23,8 @@ const Edit = ({
   currentTodo,
   todos,
   setTodos,
+  delay,
+  setDelay,
 }) => {
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
@@ -39,6 +41,49 @@ const Edit = ({
 
   const inputDurHandler = (e) => {
     setInputDur(e.target.value);
+  };
+
+  const delayHandler = (e) => {
+    setDelay(e.target.value);
+  };
+
+  const delayCalc = () => {
+    function addDelay(time) {
+      const hours = time.substring(0, 2);
+      const mins = time.substring(2, 4);
+      let hoursNum = Number(hours);
+      let minsNum = Number(mins);
+      minsNum += Number(delay);
+      let offset = Math.floor(minsNum / 60);
+      minsNum %= 60;
+      hoursNum += offset;
+
+      return (
+        hoursNum.toString().padStart(2, "0") +
+        minsNum.toString().padStart(2, "0")
+      );
+    }
+
+    let passed = false;
+    setTodos(
+      todos.map((item) => {
+        if (item.id === currentTodo) {
+          passed = true;
+        }
+        if (passed) {
+          return {
+            ...item,
+            start: addDelay(item.start),
+            end: addDelay(item.end),
+          };
+        }
+
+        return item;
+      })
+    );
+    passed = false;
+
+    setDelay(0);
   };
 
   const keyPressHandler = (e) => {
@@ -126,17 +171,14 @@ const Edit = ({
         ></textarea>
         <p className="label-delay">Quick delay</p>
         <div className="field-wrap">
-          <div
-            className="button-duration"
-            onClick={() => setDuration(!duration)}
-          >
+          <div className="button-delay" onClick={delayCalc}>
             <FontAwesomeIcon className="icon" icon={faClock} />
           </div>
           <input
-            onChange={duration ? inputDurHandler : inputEndHandler}
+            onChange={delayHandler}
             className="input-delay"
             placeholder="0"
-            value={inputDur}
+            value={delay}
             type="text"
             maxLength="4"
           />
