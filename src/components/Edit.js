@@ -104,6 +104,11 @@ const Edit = ({
     editHandler(e);
   };
 
+  const deleteHandler = (e) => {
+    setTodos(todos.filter((item) => item.id !== currentTodo));
+    editHandler(e);
+  };
+
   return (
     <div className="edit">
       <form className={edit ? "edit-content active" : "edit-content"}>
@@ -188,10 +193,7 @@ const Edit = ({
         ></textarea>
         <div className="buttons">
           <Button action={editedHandler} text="Done" />
-          <Button
-            action={inputTitle ? createTodoHandler : editHandler}
-            text="Delete"
-          />
+          <Button action={deleteHandler} text="Delete" />
         </div>
       </form>
       <div

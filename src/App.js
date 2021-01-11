@@ -23,6 +23,11 @@ function App() {
 
   const popupHandler = (e) => {
     e.preventDefault();
+    setInputTitle("");
+    setInputDesc("");
+    setInputStart("");
+    setInputEnd("");
+    setDurationText(false);
     setPopup(!popup);
   };
 
