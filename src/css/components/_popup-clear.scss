@@ -1,0 +1,76 @@
+.popup-clear {
+  .popup-clear-wrapper {
+    background-color: $white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 35px 20px;
+    border-radius: 40px 40px 0px 0px;
+    text-align: center;
+    opacity: 0%;
+    transform: translateY(100%);
+    transition: all 0.3s ease-out;
+
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      color: $monoPrimary;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      font-weight: 600;
+      color: $monoSecondary;
+      margin-bottom: 30px;
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        padding: 12px 15px;
+        border-radius: 12px;
+        max-height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      button:nth-child(1) {
+        margin-right: 25px;
+      }
+      button:nth-child(2) {
+        background-color: $white;
+        border: solid 3px $primary;
+        color: $primary;
+      }
+    }
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .popup-bg {
+    background-color: rgba(0, 0, 0, 0.15);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 1;
+    opacity: 0%;
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+  }
+
+  .popup-bg.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

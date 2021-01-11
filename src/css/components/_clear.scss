@@ -1,0 +1,22 @@
+.clear {
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+
+  &:focus,
+  &:hover {
+    opacity: 70%;
+  }
+
+  .bar {
+    width: 21px;
+    height: 3px;
+    background-color: $monoTinted;
+    margin-bottom: 4px;
+    border-radius: 5px;
+  }
+
+  .bar2 {
+    position: relative;
+    left: 3px;
+  }
+}

@@ -1,0 +1,23 @@
+.status {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  .wrapper {
+    display: flex;
+    align-items: baseline;
+  }
+  .main-status {
+    color: $monoPrimary;
+    font-size: 42px;
+    font-weight: 700;
+    margin-right: 15px;
+  }
+
+  .tasks-status {
+    color: $monoTinted;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}

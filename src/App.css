@@ -1,17 +1,85 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -21,26 +89,40 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
 body {
   line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
   content: none;
 }
 
@@ -53,7 +135,7 @@ input {
   -webkit-appearance: none;
 }
 
-a[href^=tel] {
+a[href^="tel"] {
   text-decoration: inherit;
   color: inherit;
 }
@@ -1161,33 +1243,62 @@ html {
   pointer-events: all;
 }
 
-.menu {
-  position: absolute;
-  top: -105px;
-  left: 0;
-  width: 100%;
-  height: 110px;
-}
-
-.menu .menu-list {
+.status {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100%;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
 }
 
-.menu .menu-list li {
-  font-size: 24px;
-  color: #ffffff;
+.status .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.status .main-status {
+  color: #3d3d3d;
+  font-size: 42px;
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.status .tasks-status {
+  color: #b7b7b7;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.clear {
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.clear:focus, .clear:hover {
+  opacity: 70%;
+}
+
+.clear .bar {
+  width: 21px;
+  height: 3px;
+  background-color: #b7b7b7;
+  margin-bottom: 4px;
+  border-radius: 5px;
+}
+
+.clear .bar2 {
+  position: relative;
+  left: 3px;
 }
 
 .edit .edit-content {
@@ -1559,6 +1670,99 @@ html {
   pointer-events: all;
 }
 
+.popup-clear .popup-clear-wrapper {
+  background-color: #ffffff;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 35px 20px;
+  border-radius: 40px 40px 0px 0px;
+  text-align: center;
+  opacity: 0%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.popup-clear .popup-clear-wrapper .title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #3d3d3d;
+  margin-bottom: 10px;
+}
+
+.popup-clear .popup-clear-wrapper .subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #707070;
+  margin-bottom: 30px;
+}
+
+.popup-clear .popup-clear-wrapper .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup-clear .popup-clear-wrapper .wrapper button {
+  padding: 12px 15px;
+  border-radius: 12px;
+  max-height: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.popup-clear .popup-clear-wrapper .wrapper button:nth-child(1) {
+  margin-right: 25px;
+}
+
+.popup-clear .popup-clear-wrapper .wrapper button:nth-child(2) {
+  background-color: #ffffff;
+  border: solid 3px #a9bcee;
+  color: #a9bcee;
+}
+
+.popup-clear .popup-clear-wrapper.active {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.popup-clear .popup-bg {
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 1;
+  opacity: 0%;
+  pointer-events: none;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.popup-clear .popup-bg.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .App {
   height: 100vh;
   position: relative;
@@ -1579,33 +1783,6 @@ html {
 .main::-webkit-scrollbar {
   display: none;
   /* Safari and Chrome */
-}
-
-.status {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  margin-bottom: 30px;
-}
-
-.status .main-status {
-  color: #3d3d3d;
-  font-size: 42px;
-  font-weight: 700;
-  margin-right: 15px;
-}
-
-.status .tasks-status {
-  color: #b7b7b7;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.menu-wrap {
-  position: relative;
 }
 
 .bottom {

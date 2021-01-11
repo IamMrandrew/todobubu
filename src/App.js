@@ -3,9 +3,9 @@ import Timeslot from "./components/Timeslot";
 import Button from "./components/Button";
 import Status from "./components/Status";
 import Popup from "./components/Popup";
-import Menu from "./components/Menu";
 import Edit from "./components/Edit";
 import { useState, useEffect } from "react";
+import PopupClear from "./components/PopupClear";
 
 function App() {
   const [popup, setPopup] = useState(false);
@@ -17,7 +17,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [sortedTodos, setSortedTodos] = useState([]);
   const [duration, setDuration] = useState(false);
-  const [menu, setMenu] = useState(false);
+  const [clear, setClear] = useState(false);
   const [edit, setEdit] = useState(false);
   const [currentTodo, setCurrentTodo] = useState(0);
   const [delay, setDelay] = useState(0);
@@ -38,8 +38,13 @@ function App() {
     setCurrentTodo(id);
   };
 
-  const menuHandler = () => {
-    setMenu(!menu);
+  const clearHandler = () => {
+    setClear(!clear);
+  };
+
+  const clearAllHandler = () => {
+    setTodos([]);
+    setClear(!clear);
   };
 
   const saveLocal = () => {
@@ -129,7 +134,10 @@ function App() {
   return (
     <div className="App">
       <div className="container main">
-        <Status num={todos.filter((todo) => todo.complete === false).length} />
+        <Status
+          num={todos.filter((todo) => todo.complete === false).length}
+          clearHandler={clearHandler}
+        />
         {sortedTodos.map((todo) => (
           <Timeslot
             key={todo.id}
@@ -141,11 +149,6 @@ function App() {
         ))}
         <div className="container addTodo">
           <Button action={popupHandler} text="Add Todo" />
-          {/* <div className="menu-wrap">
-            <Button action={menuHandler} text="" />
-            <Menu />
-            <div className="menu-background active"></div>
-          </div> */}
         </div>
         <Popup
           createTodoHandler={createTodoHandler}
@@ -185,6 +188,11 @@ function App() {
           setTodos={setTodos}
           delay={delay}
           setDelay={setDelay}
+        />
+        <PopupClear
+          clear={clear}
+          clearHandler={clearHandler}
+          clearAllHandler={clearAllHandler}
         />
         <div className="bottom"></div>
       </div>

@@ -17,29 +17,6 @@
   }
 }
 
-.status {
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 30px;
-
-  .main-status {
-    color: $monoPrimary;
-    font-size: 42px;
-    font-weight: 700;
-    margin-right: 15px;
-  }
-
-  .tasks-status {
-    color: $monoTinted;
-    font-size: 18px;
-    font-weight: 600;
-  }
-}
-
-.menu-wrap {
-  position: relative;
-}
-
 .bottom {
   height: 88px;
 }
