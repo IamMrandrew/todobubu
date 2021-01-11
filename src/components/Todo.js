@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ todo, todos, setTodos }) => {
+const Todo = ({ todo, todos, setTodos, editHandler }) => {
   const completeHandler = () => {
     setTodos(
       todos.map((item) => {
@@ -17,7 +17,7 @@ const Todo = ({ todo, todos, setTodos }) => {
 
   return (
     <div className={todo.complete ? "todo completed" : "todo"}>
-      <div className="wrapper">
+      <div className="wrapper" onClick={(e) => editHandler(e, todo.id)}>
         <h3 className={todo.complete ? "todo-title completed" : "todo-title"}>
           {todo.title}
         </h3>

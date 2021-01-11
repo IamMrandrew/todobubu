@@ -719,6 +719,7 @@ html {
           box-shadow: 0 0 0 4px #a9bcee;
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+  cursor: pointer;
 }
 
 .todo .todo-complete.completed {
@@ -834,6 +835,36 @@ html {
   right: 0px;
   background-color: #ffffff;
   height: 88px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.addTodo button:nth-child(1) {
+  margin-right: 8px;
+}
+
+.addTodo .menu-wrap {
+  max-width: 52px;
+}
+
+.addTodo .menu-wrap .menu-background {
+  width: 100%;
+  background-color: #a9bcee;
+  border-radius: 18px;
+}
+
+.addTodo .menu-wrap .menu-background.active {
+  position: absolute;
+  z-index: -1;
+  top: -115px;
+  height: 150px;
 }
 
 .popup .popup-content {
@@ -1115,6 +1146,403 @@ html {
   pointer-events: all;
 }
 
+.menu {
+  position: absolute;
+  top: -105px;
+  left: 0;
+  width: 100%;
+  height: 110px;
+}
+
+.menu .menu-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.menu .menu-list li {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.edit .edit-content {
+  background-color: #ffffff;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 35px 20px;
+  border-radius: 40px 40px 0px 0px;
+  opacity: 0%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.edit .edit-content .input-title {
+  background-color: #fafafa;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Barlow", "Open Sans", sans-serif;
+  color: #414f75;
+  resize: none;
+}
+
+.edit .edit-content .input-title::-webkit-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-title:-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-title::-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-title::placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-title::-moz-selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .input-title::selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .label-delay {
+  margin-bottom: 6px;
+  color: #707070;
+  font-weight: 600;
+}
+
+.edit .edit-content .field-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit .edit-content .field-wrap .button-duration {
+  background-color: #fafafa;
+  padding: 7px 9px;
+  border-radius: 6px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.edit .edit-content .field-wrap .button-duration .icon {
+  color: #a9bcee;
+  font-size: 19px;
+}
+
+.edit .edit-content .field-wrap .input-delay {
+  background-color: #fafafa;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 6px 15px;
+  font-size: 18px;
+  color: #a9bcee;
+  font-weight: 600;
+  max-width: 60px;
+}
+
+.edit .edit-content .field-wrap .input-delay::-webkit-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .input-delay:-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .input-delay::-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .input-delay::placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .input-delay::-moz-selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .field-wrap .input-delay::selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .field-wrap .delay-unit {
+  background-color: #fafafa;
+  padding: 6px 9px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  color: #a9bcee;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.edit .edit-content .field-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 25px;
+}
+
+.edit .edit-content .field-wrap .field-start,
+.edit .edit-content .field-wrap .field-end {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+.edit .edit-content .field-wrap .field-start .label-start,
+.edit .edit-content .field-wrap .field-start .label-end,
+.edit .edit-content .field-wrap .field-end .label-start,
+.edit .edit-content .field-wrap .field-end .label-end {
+  margin-bottom: 6px;
+  color: #707070;
+  font-weight: 600;
+}
+
+.edit .edit-content .field-wrap .field-start .wrapper,
+.edit .edit-content .field-wrap .field-end .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.edit .edit-content .field-wrap .field-start .wrapper .button-duration,
+.edit .edit-content .field-wrap .field-end .wrapper .button-duration {
+  background-color: #fafafa;
+  padding: 7px 9px;
+  border-radius: 6px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.edit .edit-content .field-wrap .field-start .wrapper .button-duration .icon,
+.edit .edit-content .field-wrap .field-end .wrapper .button-duration .icon {
+  color: #a9bcee;
+  font-size: 19px;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start,
+.edit .edit-content .field-wrap .field-start .input-end,
+.edit .edit-content .field-wrap .field-start .input-dur,
+.edit .edit-content .field-wrap .field-end .input-start,
+.edit .edit-content .field-wrap .field-end .input-end,
+.edit .edit-content .field-wrap .field-end .input-dur {
+  background-color: #fafafa;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 6px 15px;
+  font-size: 18px;
+  color: #a9bcee;
+  font-weight: 600;
+  max-width: 75px;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start::-webkit-input-placeholder,
+.edit .edit-content .field-wrap .field-start .input-end::-webkit-input-placeholder,
+.edit .edit-content .field-wrap .field-start .input-dur::-webkit-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-start::-webkit-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-end::-webkit-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-dur::-webkit-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start:-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-start .input-end:-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-start .input-dur:-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-start:-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-end:-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-dur:-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start::-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-start .input-end::-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-start .input-dur::-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-start::-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-end::-ms-input-placeholder,
+.edit .edit-content .field-wrap .field-end .input-dur::-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start::placeholder,
+.edit .edit-content .field-wrap .field-start .input-end::placeholder,
+.edit .edit-content .field-wrap .field-start .input-dur::placeholder,
+.edit .edit-content .field-wrap .field-end .input-start::placeholder,
+.edit .edit-content .field-wrap .field-end .input-end::placeholder,
+.edit .edit-content .field-wrap .field-end .input-dur::placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start::-moz-selection,
+.edit .edit-content .field-wrap .field-start .input-end::-moz-selection,
+.edit .edit-content .field-wrap .field-start .input-dur::-moz-selection,
+.edit .edit-content .field-wrap .field-end .input-start::-moz-selection,
+.edit .edit-content .field-wrap .field-end .input-end::-moz-selection,
+.edit .edit-content .field-wrap .field-end .input-dur::-moz-selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start::selection,
+.edit .edit-content .field-wrap .field-start .input-end::selection,
+.edit .edit-content .field-wrap .field-start .input-dur::selection,
+.edit .edit-content .field-wrap .field-end .input-start::selection,
+.edit .edit-content .field-wrap .field-end .input-end::selection,
+.edit .edit-content .field-wrap .field-end .input-dur::selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .field-wrap .field-start .input-dur,
+.edit .edit-content .field-wrap .field-end .input-dur {
+  max-width: 60px;
+  margin-right: 5px;
+}
+
+.edit .edit-content .field-wrap .field-start .duration-unit,
+.edit .edit-content .field-wrap .field-end .duration-unit {
+  background-color: #fafafa;
+  padding: 6px 9px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  color: #a9bcee;
+  font-weight: 600;
+  font-size: 18px;
+  opacity: 0;
+}
+
+.edit .edit-content .field-wrap .field-start .duration-unit.active,
+.edit .edit-content .field-wrap .field-end .duration-unit.active {
+  opacity: 1;
+}
+
+.edit .edit-content .label-desc {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #707070;
+  font-weight: 600;
+}
+
+.edit .edit-content .input-desc {
+  background-color: #fafafa;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  font-family: "Barlow", "Open Sans", sans-serif;
+  color: #b5c1de;
+  resize: none;
+}
+
+.edit .edit-content .input-desc::-webkit-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-desc:-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-desc::-ms-input-placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-desc::placeholder {
+  color: #b7b7b7;
+}
+
+.edit .edit-content .input-desc::-moz-selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .input-desc::selection {
+  background: #a9bcee;
+  color: #ffffff;
+}
+
+.edit .edit-content .buttons button:nth-child(1) {
+  margin-bottom: 10px;
+}
+
+.edit .edit-content .buttons button:nth-child(2) {
+  background-color: #ffffff;
+  border: solid 3px #a9bcee;
+  color: #a9bcee;
+}
+
+.edit .edit-content.active {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.edit .edit-bg {
+  background-color: rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 1;
+  opacity: 0%;
+  pointer-events: none;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.edit .edit-bg.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 .App {
   height: 100vh;
   position: relative;
@@ -1158,6 +1586,10 @@ html {
   color: #b7b7b7;
   font-size: 18px;
   font-weight: 600;
+}
+
+.menu-wrap {
+  position: relative;
 }
 
 .bottom {

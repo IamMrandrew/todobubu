@@ -2,11 +2,12 @@ import React from "react";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
+import { useEffect } from "react";
 
-const Popup = ({
+const Edit = ({
   createTodoHandler,
-  popup,
-  popupHandler,
+  edit,
+  editHandler,
   inputTitle,
   setInputTitle,
   inputDesc,
@@ -19,6 +20,9 @@ const Popup = ({
   setInputDur,
   durationText,
   setDurationText,
+  currentTodo,
+  todos,
+  setTodos,
 }) => {
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
@@ -44,9 +48,65 @@ const Popup = ({
       }
     }
   };
+
+  useEffect(() => {
+    todos.forEach((todo) => {
+      if (todo.id === currentTodo) {
+        setInputTitle(todo.title);
+        setInputStart(todo.start);
+        setInputEnd(todo.end);
+        setInputDesc(todo.desc);
+      }
+    });
+  }, [edit]);
+
+  const editedHandler = (e) => {
+    e.preventDefault();
+    let inputEndDur;
+    if (durationText) {
+      const hours = inputStart.substring(0, 2);
+      const mins = inputStart.substring(2, 4);
+      let hoursNum = Number(hours);
+      let minsNum = Number(mins);
+      minsNum += Number(inputDur);
+      let offset = Math.floor(minsNum / 60);
+      minsNum %= 60;
+      hoursNum += offset;
+      setInputEnd(
+        hoursNum.toString().padStart(2, "0") +
+          minsNum.toString().padStart(2, "0")
+      );
+      inputEndDur =
+        hoursNum.toString().padStart(2, "0") +
+        minsNum.toString().padStart(2, "0");
+    }
+
+    setTodos(
+      todos.map((item) => {
+        if (item.id === currentTodo) {
+          return {
+            ...item,
+            title: inputTitle,
+            desc: inputDesc ? inputDesc : "Nothing special ...",
+            start: inputStart,
+            end: durationText ? inputEndDur : inputEnd,
+          };
+        }
+        return item;
+      })
+    );
+
+    setInputTitle("");
+    setInputDesc("");
+    setInputStart("");
+    setInputEnd("");
+
+    editHandler(e);
+  };
+
   return (
-    <div className="popup">
-      <form className={popup ? "popup-content active" : "popup-content"}>
+    <div className="edit">
+      <form className={edit ? "edit-content active" : "edit-content"}>
         <textarea
           onChange={inputTitleHandler}
           onKeyPress={keyPressHandler}
@@ -55,6 +115,24 @@ const Popup = ({
           value={inputTitle}
           rows="2"
         ></textarea>
+        <p className="label-delay">Quick delay</p>
+        <div className="field-wrap">
+          <div
+            className="button-duration"
+            onClick={() => setDurationText(!durationText)}
+          >
+            <FontAwesomeIcon className="icon" icon={faClock} />
+          </div>
+          <input
+            onChange={durationText ? inputDurHandler : inputEndHandler}
+            className="input-delay"
+            placeholder="30"
+            value={inputDur}
+            type="text"
+            maxLength="4"
+          />
+          <div className="delay-unit">mins</div>
+        </div>
         <div className="field-wrap">
           <div className="field-start">
             <p className="label-start">When to start?</p>
@@ -108,17 +186,20 @@ const Popup = ({
           value={inputDesc}
           rows="5"
         ></textarea>
-        <Button
-          action={inputTitle ? createTodoHandler : popupHandler}
-          text={inputTitle ? "Create" : "Cancel"}
-        />
+        <div className="buttons">
+          <Button action={editedHandler} text="Done" />
+          <Button
+            action={inputTitle ? createTodoHandler : editHandler}
+            text="Delete"
+          />
+        </div>
       </form>
       <div
-        onClick={popupHandler}
-        className={popup ? "popup-bg active" : "popup-bg"}
+        onClick={editHandler}
+        className={edit ? "edit-bg active" : "edit-bg"}
       ></div>
     </div>
   );
 };
 
-export default Popup;
+export default Edit;

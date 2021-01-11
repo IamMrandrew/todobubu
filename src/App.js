@@ -3,6 +3,8 @@ import Timeslot from "./components/Timeslot";
 import Button from "./components/Button";
 import Status from "./components/Status";
 import Popup from "./components/Popup";
+import Menu from "./components/Menu";
+import Edit from "./components/Edit";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -15,11 +17,25 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [sortedTodos, setSortedTodos] = useState([]);
   const [durationText, setDurationText] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState(0);
 
   const popupHandler = (e) => {
     e.preventDefault();
     setPopup(!popup);
   };
+
+  const editHandler = (e, id) => {
+    e.preventDefault();
+    setEdit(!edit);
+    setCurrentTodo(id);
+  };
+
+  const menuHandler = () => {
+    setMenu(!menu);
+  };
+
   const createTodoHandler = (e) => {
     e.preventDefault();
 
@@ -40,8 +56,6 @@ function App() {
       inputEndDur =
         hoursNum.toString().padStart(2, "0") +
         minsNum.toString().padStart(2, "0");
-      console.log(hoursNum);
-      console.log(minsNum);
     }
 
     setTodos([
@@ -89,17 +103,23 @@ function App() {
   return (
     <div className="App">
       <div className="container main">
-        <Status num={todos.length} />
+        <Status num={todos.filter((todo) => todo.complete === false).length} />
         {sortedTodos.map((todo) => (
           <Timeslot
             key={todo.id}
             todo={todo}
             todos={todos}
             setTodos={setTodos}
+            editHandler={editHandler}
           />
         ))}
         <div className="container addTodo">
           <Button action={popupHandler} text="Add Todo" />
+          {/* <div className="menu-wrap">
+            <Button action={menuHandler} text="" />
+            <Menu />
+            <div className="menu-background active"></div>
+          </div> */}
         </div>
         <Popup
           createTodoHandler={createTodoHandler}
@@ -117,6 +137,26 @@ function App() {
           setInputDesc={setInputDesc}
           durationText={durationText}
           setDurationText={setDurationText}
+        />
+        <Edit
+          createTodoHandler={createTodoHandler}
+          edit={edit}
+          editHandler={editHandler}
+          inputTitle={inputTitle}
+          setInputTitle={setInputTitle}
+          inputStart={inputStart}
+          setInputStart={setInputStart}
+          inputEnd={inputEnd}
+          setInputEnd={setInputEnd}
+          inputDur={inputDur}
+          setInputDur={setInputDur}
+          inputDesc={inputDesc}
+          setInputDesc={setInputDesc}
+          durationText={durationText}
+          setDurationText={setDurationText}
+          currentTodo={currentTodo}
+          todos={todos}
+          setTodos={setTodos}
         />
         <div className="bottom"></div>
       </div>

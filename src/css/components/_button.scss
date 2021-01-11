@@ -17,7 +17,31 @@
   position: fixed;
   bottom: 0;
   left: 0px;
-  right: 0px;    
+  right: 0px;
   background-color: $white;
   height: 88px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button:nth-child(1) {
+    margin-right: 8px;
+  }
+
+  .menu-wrap {
+    max-width: 52px;
+
+    .menu-background {
+      width: 100%;
+      background-color: $primary;
+      border-radius: 18px;
+
+      &.active {
+        position: absolute;
+        z-index: -1;
+        top: -115px;
+        height: 150px;
+      }
+    }
+  }
 }

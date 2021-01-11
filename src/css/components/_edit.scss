@@ -1,0 +1,242 @@
+.edit {
+  .edit-content {
+    background-color: $white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 35px 20px;
+    border-radius: 40px 40px 0px 0px;
+    opacity: 0%;
+    transform: translateY(100%);
+    transition: all 0.3s ease-out;
+
+    .input-title {
+      background-color: $background;
+      border: none;
+      outline: none;
+      border-radius: 20px;
+      padding: 20px;
+      width: 100%;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 18px;
+      font-family: "Barlow", "Open Sans", sans-serif;
+      color: $primaryShaded;
+      resize: none;
+
+      &::placeholder {
+        color: $monoTinted;
+      }
+
+      &::selection {
+        background: $primary;
+        color: $white;
+      }
+    }
+
+    .label-delay {
+      margin-bottom: 6px;
+      color: $monoSecondary;
+      font-weight: 600;
+    }
+
+    .field-wrap {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .button-duration {
+        background-color: $background;
+        padding: 7px 9px;
+        border-radius: 6px;
+        margin-right: 6px;
+        cursor: pointer;
+
+        .icon {
+          color: $primary;
+          font-size: 19px;
+        }
+      }
+
+      .input-delay {
+        background-color: $background;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        padding: 6px 15px;
+        font-size: 18px;
+        color: $primary;
+        font-weight: 600;
+        max-width: 60px;
+
+        &::placeholder {
+          color: $monoTinted;
+        }
+
+        &::selection {
+          background: $primary;
+          color: $white;
+        }
+      }
+
+      .delay-unit {
+        background-color: $background;
+        padding: 6px 9px;
+        padding-bottom: 10px;
+        border-radius: 10px;
+        color: $primary;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
+
+    .field-wrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+
+      .field-start,
+      .field-end {
+        flex-basis: 50%;
+
+        .label-start,
+        .label-end {
+          margin-bottom: 6px;
+          color: $monoSecondary;
+          font-weight: 600;
+        }
+
+        .wrapper {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          .button-duration {
+            background-color: $background;
+            padding: 7px 9px;
+            border-radius: 6px;
+            margin-right: 6px;
+            cursor: pointer;
+
+            .icon {
+              color: $primary;
+              font-size: 19px;
+            }
+          }
+        }
+
+        .input-start,
+        .input-end,
+        .input-dur {
+          background-color: $background;
+          border: none;
+          outline: none;
+          border-radius: 10px;
+          padding: 6px 15px;
+          font-size: 18px;
+          color: $primary;
+          font-weight: 600;
+          max-width: 75px;
+
+          &::placeholder {
+            color: $monoTinted;
+          }
+
+          &::selection {
+            background: $primary;
+            color: $white;
+          }
+        }
+
+        .input-dur {
+          max-width: 60px;
+          margin-right: 5px;
+        }
+
+        .duration-unit {
+          background-color: $background;
+          padding: 6px 9px;
+          padding-bottom: 10px;
+          border-radius: 10px;
+          color: $primary;
+          font-weight: 600;
+          font-size: 18px;
+          opacity: 0;
+          // transition: all 0.3s;
+
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .label-desc {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: $monoSecondary;
+      font-weight: 600;
+    }
+
+    .input-desc {
+      background-color: $background;
+      border: none;
+      outline: none;
+      border-radius: 20px;
+      padding: 20px;
+      width: 100%;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 18px;
+      font-family: "Barlow", "Open Sans", sans-serif;
+      color: $primaryMuted;
+      resize: none;
+
+      &::placeholder {
+        color: $monoTinted;
+      }
+
+      &::selection {
+        background: $primary;
+        color: $white;
+      }
+    }
+
+    .buttons {
+      button:nth-child(1) {
+        margin-bottom: 10px;
+      }
+
+      button:nth-child(2) {
+        background-color: $white;
+        border: solid 3px $primary;
+        color: $primary;
+      }
+    }
+  }
+
+  .edit-content.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .edit-bg {
+    background-color: rgba(0, 0, 0, 0.15);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 1;
+    opacity: 0%;
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+  }
+
+  .edit-bg.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

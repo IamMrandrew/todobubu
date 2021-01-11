@@ -43,6 +43,7 @@
     background-color: none;
     box-shadow: 0 0 0 4px $primary;
     transition: all 0.5s ease-out;
+    cursor: pointer;
 
     &.completed {
       animation: todoCompleteCompleted 2s ease-out forwards;
