@@ -131,7 +131,7 @@ const Edit = ({
           <input
             onChange={durationText ? inputDurHandler : inputEndHandler}
             className="input-delay"
-            placeholder="30"
+            placeholder="0"
             value={inputDur}
             type="text"
             maxLength="4"
@@ -145,8 +145,8 @@ const Edit = ({
               onChange={inputStartHandler}
               className="input-start"
               placeholder={
-                new Date().getHours().toString() +
-                new Date().getMinutes().toString()
+                new Date().getHours().toString().padStart(2, "0") +
+                new Date().getMinutes().toString().padStart(2, "0")
               }
               value={inputStart}
               type="text"
