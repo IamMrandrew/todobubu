@@ -738,7 +738,12 @@ html {
     -webkit-box-shadow: 0 0 0 4px #a9bcee;
             box-shadow: 0 0 0 4px #a9bcee;
   }
-  33% {
+  15% {
+    background-color: #a9bcee;
+    -webkit-box-shadow: 0 0 0 4px #a9bcee;
+            box-shadow: 0 0 0 4px #a9bcee;
+  }
+  50% {
     background-color: #a9bcee;
     -webkit-box-shadow: 0 0 0 4px #a9bcee;
             box-shadow: 0 0 0 4px #a9bcee;
@@ -756,7 +761,12 @@ html {
     -webkit-box-shadow: 0 0 0 4px #a9bcee;
             box-shadow: 0 0 0 4px #a9bcee;
   }
-  33% {
+  15% {
+    background-color: #a9bcee;
+    -webkit-box-shadow: 0 0 0 4px #a9bcee;
+            box-shadow: 0 0 0 4px #a9bcee;
+  }
+  50% {
     background-color: #a9bcee;
     -webkit-box-shadow: 0 0 0 4px #a9bcee;
             box-shadow: 0 0 0 4px #a9bcee;
@@ -772,7 +782,7 @@ html {
   0% {
     background-color: #fafafa;
   }
-  33% {
+  50% {
     background-color: #fafafa;
   }
   100% {
@@ -784,7 +794,7 @@ html {
   0% {
     background-color: #fafafa;
   }
-  33% {
+  50% {
     background-color: #fafafa;
   }
   100% {

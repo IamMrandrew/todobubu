@@ -59,7 +59,11 @@
         background-color: none;
         box-shadow: 0 0 0 4px $primary;
       }
-      33% {
+      15% {
+        background-color: $primary;
+        box-shadow: 0 0 0 4px $primary;
+      }
+      50% {
         background-color: $primary;
         box-shadow: 0 0 0 4px $primary;
       }
@@ -73,7 +77,7 @@
       0% {
         background-color: $background;
       }
-      33% {
+      50% {
         background-color: $background;
       }
       100% {
