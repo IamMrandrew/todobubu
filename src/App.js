@@ -16,7 +16,7 @@ function App() {
   const [inputDesc, setInputDesc] = useState("");
   const [todos, setTodos] = useState([]);
   const [sortedTodos, setSortedTodos] = useState([]);
-  const [durationText, setDurationText] = useState(false);
+  const [duration, setDuration] = useState(false);
   const [menu, setMenu] = useState(false);
   const [edit, setEdit] = useState(false);
   const [currentTodo, setCurrentTodo] = useState(0);
@@ -27,7 +27,7 @@ function App() {
     setInputDesc("");
     setInputStart("");
     setInputEnd("");
-    setDurationText(false);
+    setDuration(false);
     setPopup(!popup);
   };
 
@@ -61,7 +61,7 @@ function App() {
     e.preventDefault();
 
     let inputEndDur;
-    if (durationText) {
+    if (duration) {
       const hours = inputStart.substring(0, 2);
       const mins = inputStart.substring(2, 4);
       let hoursNum = Number(hours);
@@ -86,7 +86,9 @@ function App() {
         title: inputTitle,
         desc: inputDesc ? inputDesc : "Nothing special ...",
         start: inputStart,
-        end: durationText ? inputEndDur : inputEnd,
+        end: duration ? inputEndDur : inputEnd,
+        dur: inputDur,
+        duration: duration,
         complete: false,
       },
     ]);
@@ -94,6 +96,7 @@ function App() {
     setInputDesc("");
     setInputStart("");
     setInputEnd("");
+    setDuration(false);
     setPopup(!popup);
   };
 
@@ -157,8 +160,8 @@ function App() {
           setInputDur={setInputDur}
           inputDesc={inputDesc}
           setInputDesc={setInputDesc}
-          durationText={durationText}
-          setDurationText={setDurationText}
+          duration={duration}
+          setDuration={setDuration}
         />
         <Edit
           createTodoHandler={createTodoHandler}
@@ -174,8 +177,8 @@ function App() {
           setInputDur={setInputDur}
           inputDesc={inputDesc}
           setInputDesc={setInputDesc}
-          durationText={durationText}
-          setDurationText={setDurationText}
+          duration={duration}
+          setDuration={setDuration}
           currentTodo={currentTodo}
           todos={todos}
           setTodos={setTodos}

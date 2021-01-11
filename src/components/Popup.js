@@ -17,8 +17,8 @@ const Popup = ({
   setInputEnd,
   inputDur,
   setInputDur,
-  durationText,
-  setDurationText,
+  duration,
+  setDuration,
 }) => {
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
@@ -72,27 +72,25 @@ const Popup = ({
           </div>
           <div className="field-end">
             <p className="label-end">
-              {durationText ? "How long?" : "When to end?"}
+              {duration ? "How long?" : "When to end?"}
             </p>
             <div className="wrapper">
               <div
                 className="button-duration"
-                onClick={() => setDurationText(!durationText)}
+                onClick={() => setDuration(!duration)}
               >
                 <FontAwesomeIcon className="icon" icon={faClock} />
               </div>
               <input
-                onChange={durationText ? inputDurHandler : inputEndHandler}
-                className={durationText ? "input-dur" : "input-end"}
-                placeholder={durationText ? "30" : "1000"}
-                value={durationText ? inputDur : inputEnd}
+                onChange={duration ? inputDurHandler : inputEndHandler}
+                className={duration ? "input-dur" : "input-end"}
+                placeholder={duration ? "30" : "1000"}
+                value={duration ? inputDur : inputEnd}
                 type="text"
                 maxLength="4"
               />
               <div
-                className={
-                  durationText ? "duration-unit active" : "duration-unit"
-                }
+                className={duration ? "duration-unit active" : "duration-unit"}
               >
                 mins
               </div>

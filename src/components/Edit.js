@@ -18,8 +18,8 @@ const Edit = ({
   setInputEnd,
   inputDur,
   setInputDur,
-  durationText,
-  setDurationText,
+  duration,
+  setDuration,
   currentTodo,
   todos,
   setTodos,
@@ -56,6 +56,8 @@ const Edit = ({
         setInputStart(todo.start);
         setInputEnd(todo.end);
         setInputDesc(todo.desc);
+        setInputDur(todo.dur);
+        setDuration(todo.duration);
       }
     });
   }, [edit]);
@@ -63,7 +65,7 @@ const Edit = ({
   const editedHandler = (e) => {
     e.preventDefault();
     let inputEndDur;
-    if (durationText) {
+    if (duration) {
       const hours = inputStart.substring(0, 2);
       const mins = inputStart.substring(2, 4);
       let hoursNum = Number(hours);
@@ -89,7 +91,9 @@ const Edit = ({
             title: inputTitle,
             desc: inputDesc ? inputDesc : "Nothing special ...",
             start: inputStart,
-            end: durationText ? inputEndDur : inputEnd,
+            end: duration ? inputEndDur : inputEnd,
+            dur: inputDur,
+            duration: duration,
           };
         }
         return item;
@@ -124,12 +128,12 @@ const Edit = ({
         <div className="field-wrap">
           <div
             className="button-duration"
-            onClick={() => setDurationText(!durationText)}
+            onClick={() => setDuration(!duration)}
           >
             <FontAwesomeIcon className="icon" icon={faClock} />
           </div>
           <input
-            onChange={durationText ? inputDurHandler : inputEndHandler}
+            onChange={duration ? inputDurHandler : inputEndHandler}
             className="input-delay"
             placeholder="0"
             value={inputDur}
@@ -155,27 +159,25 @@ const Edit = ({
           </div>
           <div className="field-end">
             <p className="label-end">
-              {durationText ? "How long?" : "When to end?"}
+              {duration ? "How long?" : "When to end?"}
             </p>
             <div className="wrapper">
               <div
                 className="button-duration"
-                onClick={() => setDurationText(!durationText)}
+                onClick={() => setDuration(!duration)}
               >
                 <FontAwesomeIcon className="icon" icon={faClock} />
               </div>
               <input
-                onChange={durationText ? inputDurHandler : inputEndHandler}
-                className={durationText ? "input-dur" : "input-end"}
-                placeholder={durationText ? "30" : "1000"}
-                value={durationText ? inputDur : inputEnd}
+                onChange={duration ? inputDurHandler : inputEndHandler}
+                className={duration ? "input-dur" : "input-end"}
+                placeholder={duration ? "30" : "1000"}
+                value={duration ? inputDur : inputEnd}
                 type="text"
                 maxLength="4"
               />
               <div
-                className={
-                  durationText ? "duration-unit active" : "duration-unit"
-                }
+                className={duration ? "duration-unit active" : "duration-unit"}
               >
                 mins
               </div>
