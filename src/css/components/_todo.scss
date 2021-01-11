@@ -12,6 +12,11 @@
     animation: todoCompleted 2s ease-out forwards;
   }
 
+  .wrapper {
+    min-width: calc(100% - 26px);
+    cursor: pointer;
+  }
+
   .todo-title {
     color: $primaryShaded;
     font-weight: 600;

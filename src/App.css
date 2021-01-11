@@ -684,6 +684,11 @@ html {
           animation: todoCompleted 2s ease-out forwards;
 }
 
+.todo .wrapper {
+  min-width: calc(100% - 26px);
+  cursor: pointer;
+}
+
 .todo .todo-title {
   color: #414f75;
   font-weight: 600;
