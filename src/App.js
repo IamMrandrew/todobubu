@@ -89,7 +89,12 @@ function App() {
   };
 
   const clearAllHandler = () => {
+    const postponedTodos = todos.filter((todo) => todo.postponed === true);
+    postponedTodos.forEach((todo) => {
+      todo.postponed = false;
+    });
     setTodos([]);
+    setTodos(postponedTodos);
     setClear(!clear);
   };
 
@@ -126,6 +131,7 @@ function App() {
         dur: inputDur,
         duration: duration,
         complete: false,
+        postponed: false,
       },
     ]);
 

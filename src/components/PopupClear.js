@@ -7,8 +7,11 @@ const PopupClear = ({ clear, clearHandler, clearAllHandler }) => {
       <div
         className={clear ? "popup-clear-wrapper active" : "popup-clear-wrapper"}
       >
-        <p className="title">Clear all todo?</p>
-        <p className="subtitle">This moves cannot be undo</p>
+        <p className="title">New day, new beginning?</p>
+        <p className="subtitle">
+          This move will clear all passed todo. Also, postponed todos will moved
+          the next day
+        </p>
         <div className="wrapper">
           <Button action={clearAllHandler} text="Clear all?" />
           <Button action={clearHandler} text="Cancel" />

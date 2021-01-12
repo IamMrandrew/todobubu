@@ -909,6 +909,10 @@ html {
   text-align: center;
 }
 
+.timeslot .time .postponed {
+  color: #eea9a9;
+}
+
 .button {
   -webkit-appearance: none;
      -moz-appearance: none;

@@ -2,7 +2,8 @@ import React from "react";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
-import { useEffect } from "react";
+import { faStopwatch } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
 
 const PopupEdit = ({
   createTodoHandler,
@@ -26,6 +27,9 @@ const PopupEdit = ({
   delay,
   setDelay,
 }) => {
+  // useState
+  const [postponed, setPostponed] = useState(false);
+
   // Handler
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
@@ -48,7 +52,7 @@ const PopupEdit = ({
     setDelay(e.target.value.toString());
   };
 
-  const delayCalc = () => {
+  const delayCalc = (e) => {
     function addDelay(time) {
       const hours = time.substring(0, 2);
       const mins = time.substring(2, 4);
@@ -58,6 +62,12 @@ const PopupEdit = ({
       let offset = Math.floor(minsNum / 60);
       minsNum %= 60;
       hoursNum += offset;
+
+      setPostponed(false);
+      if (hoursNum > 23) {
+        setPostponed(true);
+        hoursNum %= 24;
+      }
 
       return (
         hoursNum.toString().padStart(2, "0") +
@@ -76,6 +86,7 @@ const PopupEdit = ({
             ...item,
             start: addDelay(item.start),
             end: addDelay(item.end),
+            postponed: postponed,
           };
         }
 
@@ -85,6 +96,7 @@ const PopupEdit = ({
     passed = false;
 
     setDelay(0);
+    editHandler(e);
   };
 
   const keyPressHandler = (e) => {
@@ -176,7 +188,7 @@ const PopupEdit = ({
         </p>
         <div className="field-wrap">
           <div className="button-delay" onClick={delayCalc}>
-            <FontAwesomeIcon className="icon" icon={faClock} />
+            <FontAwesomeIcon className="icon" icon={faStopwatch} />
           </div>
           <input
             onChange={delayHandler}
