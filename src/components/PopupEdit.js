@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 import { useEffect } from "react";
 
-const Edit = ({
+const PopupEdit = ({
   createTodoHandler,
   edit,
   editHandler,
@@ -26,6 +26,7 @@ const Edit = ({
   delay,
   setDelay,
 }) => {
+  // Handler
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
   };
@@ -94,19 +95,6 @@ const Edit = ({
     }
   };
 
-  useEffect(() => {
-    todos.forEach((todo) => {
-      if (todo.id === currentTodo) {
-        setInputTitle(todo.title);
-        setInputStart(todo.start);
-        setInputEnd(todo.end);
-        setInputDesc(todo.desc);
-        setInputDur(todo.dur);
-        setDuration(todo.duration);
-      }
-    });
-  }, [edit]);
-
   const editedHandler = (e) => {
     e.preventDefault();
     let inputEndDur;
@@ -157,6 +145,20 @@ const Edit = ({
     setTodos(todos.filter((item) => item.id !== currentTodo));
     editHandler(e);
   };
+
+  // useEffect()
+  useEffect(() => {
+    todos.forEach((todo) => {
+      if (todo.id === currentTodo) {
+        setInputTitle(todo.title);
+        setInputStart(todo.start);
+        setInputEnd(todo.end);
+        setInputDesc(todo.desc);
+        setInputDur(todo.dur);
+        setDuration(todo.duration);
+      }
+    });
+  }, [edit]);
 
   return (
     <div className="edit">
@@ -253,4 +255,4 @@ const Edit = ({
   );
 };
 
-export default Edit;
+export default PopupEdit;

@@ -10,10 +10,10 @@
         "css/components/_todo.scss",
         "css/components/_timeslot.scss",
         "css/components/_button.scss",
-        "css/components/_popup.scss",
+        "css/components/_popup-addtodo.scss",
         "css/components/_status.scss",
         "css/components/_clear.scss",
-        "css/components/_edit.scss",
+        "css/components/_popup-edit.scss",
         "css/components/_popup-clear.scss",
         "css/_main.scss"
     ],

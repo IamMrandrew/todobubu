@@ -3,7 +3,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 
-const Popup = ({
+const PopupAddTodo = ({
   createTodoHandler,
   popup,
   popupHandler,
@@ -20,6 +20,7 @@ const Popup = ({
   duration,
   setDuration,
 }) => {
+  //Handler
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
   };
@@ -44,6 +45,7 @@ const Popup = ({
       }
     }
   };
+
   return (
     <div className="popup">
       <form className={popup ? "popup-content active" : "popup-content"}>
@@ -121,4 +123,4 @@ const Popup = ({
   );
 };
 
-export default Popup;
+export default PopupAddTodo;

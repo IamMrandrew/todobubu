@@ -2,26 +2,72 @@ import "./App.css";
 import Timeslot from "./components/Timeslot";
 import Button from "./components/Button";
 import Status from "./components/Status";
-import Popup from "./components/Popup";
-import Edit from "./components/Edit";
+import PopupAddTodo from "./components/PopupAddTodo";
+import PopupEdit from "./components/PopupEdit";
 import { useState, useEffect } from "react";
 import PopupClear from "./components/PopupClear";
 
 function App() {
+  // useState()
+  const [todos, setTodos] = useState([]);
+  const [sortedTodos, setSortedTodos] = useState([]);
+  const [currentTodo, setCurrentTodo] = useState(0);
   const [popup, setPopup] = useState(false);
+  const [clear, setClear] = useState(false);
+  const [edit, setEdit] = useState(false);
   const [inputTitle, setInputTitle] = useState("");
   const [inputStart, setInputStart] = useState("");
   const [inputEnd, setInputEnd] = useState("");
-  const [inputDur, setInputDur] = useState("30");
+  const [inputDur, setInputDur] = useState(30);
   const [inputDesc, setInputDesc] = useState("");
-  const [todos, setTodos] = useState([]);
-  const [sortedTodos, setSortedTodos] = useState([]);
   const [duration, setDuration] = useState(false);
-  const [clear, setClear] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [currentTodo, setCurrentTodo] = useState(0);
   const [delay, setDelay] = useState(0);
 
+  // useEffect()
+  useEffect(() => {
+    getLocal();
+  }, []);
+
+  const saveLocal = () => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  };
+
+  const getLocal = () => {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else {
+      let todosFromLocal = JSON.parse(localStorage.getItem("todos"));
+      setTodos(todosFromLocal);
+    }
+  };
+
+  useEffect(() => {
+    function compare(a, b) {
+      return Number(a.start) - Number(b.start);
+    }
+    setSortedTodos(todos.sort(compare));
+    saveLocal();
+  }, [todos]);
+
+  useEffect(() => {
+    const setCurrentTime = () => {
+      const duration = 30;
+      const time = new Date();
+      const start =
+        time.getHours().toString().padStart(2, "0") +
+        time.getMinutes().toString().padStart(2, "0");
+      const durationTime = new Date(time.getTime() + duration * 1000 * 60);
+      const end =
+        durationTime.getHours().toString().padStart(2, "0") +
+        durationTime.getMinutes().toString().padStart(2, "0");
+      setInputStart(start);
+      setInputEnd(end);
+    };
+
+    setCurrentTime();
+  }, [popup]);
+
+  // Handler
   const popupHandler = (e) => {
     e.preventDefault();
     setInputTitle("");
@@ -47,32 +93,16 @@ function App() {
     setClear(!clear);
   };
 
-  const saveLocal = () => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  };
-  const getLocal = () => {
-    if (localStorage.getItem("todos") === null) {
-      localStorage.setItem("todos", JSON.stringify([]));
-    } else {
-      let todosFromLocal = JSON.parse(localStorage.getItem("todos"));
-      setTodos(todosFromLocal);
-    }
-  };
-
-  useEffect(() => {
-    getLocal();
-  }, []);
-
   const createTodoHandler = (e) => {
     e.preventDefault();
-
     let inputEndDur;
+
     if (duration) {
       const hours = inputStart.substring(0, 2);
       const mins = inputStart.substring(2, 4);
       let hoursNum = Number(hours);
       let minsNum = Number(mins);
-      minsNum += Number(inputDur);
+      minsNum += inputDur;
       let offset = Math.floor(minsNum / 60);
       minsNum %= 60;
       hoursNum += offset;
@@ -98,37 +128,13 @@ function App() {
         complete: false,
       },
     ]);
+
     setInputTitle("");
     setInputDesc("");
     setInputStart("");
     setInputEnd("");
     setDuration(false);
     setPopup(!popup);
-  };
-
-  useEffect(() => {
-    function compare(a, b) {
-      return Number(a.start) - Number(b.start);
-    }
-    setSortedTodos(todos.sort(compare));
-    saveLocal();
-  }, [todos]);
-
-  useEffect(() => {
-    setCurrentTime();
-  }, [popup]);
-  const setCurrentTime = () => {
-    const duration = 30;
-    const time = new Date();
-    const start =
-      time.getHours().toString().padStart(2, "0") +
-      time.getMinutes().toString().padStart(2, "0");
-    const durationTime = new Date(time.getTime() + duration * 1000 * 60);
-    const end =
-      durationTime.getHours().toString().padStart(2, "0") +
-      durationTime.getMinutes().toString().padStart(2, "0");
-    setInputStart(start);
-    setInputEnd(end);
   };
 
   return (
@@ -150,7 +156,7 @@ function App() {
         <div className="container addTodo">
           <Button action={popupHandler} text="Add Todo" />
         </div>
-        <Popup
+        <PopupAddTodo
           createTodoHandler={createTodoHandler}
           popup={popup}
           popupHandler={popupHandler}
@@ -167,7 +173,7 @@ function App() {
           duration={duration}
           setDuration={setDuration}
         />
-        <Edit
+        <PopupEdit
           createTodoHandler={createTodoHandler}
           edit={edit}
           editHandler={editHandler}
