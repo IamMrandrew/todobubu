@@ -80,6 +80,12 @@
           background: $primary;
           color: $white;
         }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
       }
 
       .delay-unit {
@@ -148,6 +154,12 @@
           &::selection {
             background: $primary;
             color: $white;
+          }
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
           }
         }
 

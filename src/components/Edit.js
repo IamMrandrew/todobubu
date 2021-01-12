@@ -33,18 +33,18 @@ const Edit = ({
     setInputDesc(e.target.value);
   };
   const inputStartHandler = (e) => {
-    setInputStart(e.target.value);
+    setInputStart(e.target.value.toString());
   };
   const inputEndHandler = (e) => {
-    setInputEnd(e.target.value);
+    setInputEnd(e.target.value.toString());
   };
 
   const inputDurHandler = (e) => {
-    setInputDur(e.target.value);
+    setInputDur(e.target.value.toString());
   };
 
   const delayHandler = (e) => {
-    setDelay(e.target.value);
+    setDelay(e.target.value.toString());
   };
 
   const delayCalc = () => {
@@ -169,7 +169,9 @@ const Edit = ({
           value={inputTitle}
           rows="2"
         ></textarea>
-        <p className="label-delay">Quick delay</p>
+        <p className="label-delay">
+          Quick delay (Delay on this todo and afterwards)
+        </p>
         <div className="field-wrap">
           <div className="button-delay" onClick={delayCalc}>
             <FontAwesomeIcon className="icon" icon={faClock} />
@@ -179,7 +181,8 @@ const Edit = ({
             className="input-delay"
             placeholder="0"
             value={delay}
-            type="text"
+            type="number"
+            inputMode="numeric"
             maxLength="4"
           />
           <div className="delay-unit">mins</div>
@@ -195,7 +198,8 @@ const Edit = ({
                 new Date().getMinutes().toString().padStart(2, "0")
               }
               value={inputStart}
-              type="text"
+              type="number"
+              inputMode="numeric"
               maxLength="4"
             />
           </div>
@@ -215,7 +219,8 @@ const Edit = ({
                 className={duration ? "input-dur" : "input-end"}
                 placeholder={duration ? "30" : "1000"}
                 value={duration ? inputDur : inputEnd}
-                type="text"
+                type="number"
+                inputMode="numeric"
                 maxLength="4"
               />
               <div

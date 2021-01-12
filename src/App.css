@@ -1147,6 +1147,21 @@ html {
   color: #ffffff;
 }
 
+.popup .popup-content .field-wrap .field-start .input-start::-webkit-outer-spin-button, .popup .popup-content .field-wrap .field-start .input-start::-webkit-inner-spin-button,
+.popup .popup-content .field-wrap .field-start .input-end::-webkit-outer-spin-button,
+.popup .popup-content .field-wrap .field-start .input-end::-webkit-inner-spin-button,
+.popup .popup-content .field-wrap .field-start .input-dur::-webkit-outer-spin-button,
+.popup .popup-content .field-wrap .field-start .input-dur::-webkit-inner-spin-button,
+.popup .popup-content .field-wrap .field-end .input-start::-webkit-outer-spin-button,
+.popup .popup-content .field-wrap .field-end .input-start::-webkit-inner-spin-button,
+.popup .popup-content .field-wrap .field-end .input-end::-webkit-outer-spin-button,
+.popup .popup-content .field-wrap .field-end .input-end::-webkit-inner-spin-button,
+.popup .popup-content .field-wrap .field-end .input-dur::-webkit-outer-spin-button,
+.popup .popup-content .field-wrap .field-end .input-dur::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .popup .popup-content .field-wrap .field-start .input-dur,
 .popup .popup-content .field-wrap .field-end .input-dur {
   max-width: 60px;
@@ -1428,6 +1443,11 @@ html {
   color: #ffffff;
 }
 
+.edit .edit-content .field-wrap .input-delay::-webkit-outer-spin-button, .edit .edit-content .field-wrap .input-delay::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .edit .edit-content .field-wrap .delay-unit {
   background-color: #fafafa;
   padding: 6px 9px;
@@ -1562,6 +1582,21 @@ html {
 .edit .edit-content .field-wrap .field-end .input-dur::selection {
   background: #a9bcee;
   color: #ffffff;
+}
+
+.edit .edit-content .field-wrap .field-start .input-start::-webkit-outer-spin-button, .edit .edit-content .field-wrap .field-start .input-start::-webkit-inner-spin-button,
+.edit .edit-content .field-wrap .field-start .input-end::-webkit-outer-spin-button,
+.edit .edit-content .field-wrap .field-start .input-end::-webkit-inner-spin-button,
+.edit .edit-content .field-wrap .field-start .input-dur::-webkit-outer-spin-button,
+.edit .edit-content .field-wrap .field-start .input-dur::-webkit-inner-spin-button,
+.edit .edit-content .field-wrap .field-end .input-start::-webkit-outer-spin-button,
+.edit .edit-content .field-wrap .field-end .input-start::-webkit-inner-spin-button,
+.edit .edit-content .field-wrap .field-end .input-end::-webkit-outer-spin-button,
+.edit .edit-content .field-wrap .field-end .input-end::-webkit-inner-spin-button,
+.edit .edit-content .field-wrap .field-end .input-dur::-webkit-outer-spin-button,
+.edit .edit-content .field-wrap .field-end .input-dur::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .edit .edit-content .field-wrap .field-start .input-dur,

@@ -92,6 +92,12 @@
             background: $primary;
             color: $white;
           }
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
         }
 
         .input-dur {

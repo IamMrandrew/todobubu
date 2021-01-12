@@ -27,10 +27,10 @@ const Popup = ({
     setInputDesc(e.target.value);
   };
   const inputStartHandler = (e) => {
-    setInputStart(e.target.value);
+    setInputStart(e.target.value.toString());
   };
   const inputEndHandler = (e) => {
-    setInputEnd(e.target.value);
+    setInputEnd(e.target.value.toString());
   };
 
   const inputDurHandler = (e) => {
@@ -66,7 +66,8 @@ const Popup = ({
                 new Date().getMinutes().toString().padStart(2, "0")
               }
               value={inputStart}
-              type="text"
+              type="number"
+              inputMode="numeric"
               maxLength="4"
             />
           </div>
@@ -86,7 +87,8 @@ const Popup = ({
                 className={duration ? "input-dur" : "input-end"}
                 placeholder={duration ? "30" : "1000"}
                 value={duration ? inputDur : inputEnd}
-                type="text"
+                type="number"
+                inputMode="numeric"
                 maxLength="4"
               />
               <div
