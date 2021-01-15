@@ -1,13 +1,33 @@
-import "./App.css";
+import { useState, useEffect } from "react";
+import { CreateTodoContext } from "./context/CreateTodoContext";
+
 import Timeslot from "./components/Timeslot";
 import Button from "./components/Button";
 import Status from "./components/Status";
 import PopupAddTodo from "./components/PopupAddTodo";
 import PopupEdit from "./components/PopupEdit";
-import { useState, useEffect } from "react";
-import PopupClear from "./components/PopupClear";
-import { CreateTodoContext } from "./context/CreateTodoContext";
+import PopupMenu from "./components/PopupMenu";
+
+import "./App.css";
+
 import uuid from "react-uuid";
+
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyAVAWD9wDAS1SM0foL1GMDi99QxNfMuiHc",
+  authDomain: "todobubu-c9fa5.firebaseapp.com",
+  projectId: "todobubu-c9fa5",
+  storageBucket: "todobubu-c9fa5.appspot.com",
+  messagingSenderId: "235166346449",
+  appId: "1:235166346449:web:434764d66fbd69c8a8e9f0",
+  measurementId: "G-Q655C8RR6D",
+});
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -22,8 +42,19 @@ function App() {
   const [sortedTodos, setSortedTodos] = useState([]);
   const [currentTodo, setCurrentTodo] = useState(0);
 
-  const [clear, setClear] = useState(false);
+  const [menu, setMenu] = useState(false);
   const [edit, setEdit] = useState(false);
+
+  // Firebase
+  const auth = firebase.auth();
+  const firestore = firebase.firestore();
+
+  const [user] = useAuthState(auth);
+
+  const cloudTodosRef = firestore.collection("todos");
+  const query = cloudTodosRef.orderBy("createdAt");
+
+  const [cloudTodos] = useCollectionData(query, { idField: "id" });
 
   // useEffect()
   useEffect(() => {
@@ -80,24 +111,34 @@ function App() {
     setPopup(!popup);
   };
 
-  const editHandler = (e, id) => {
+  const editHandler = (e) => {
     e.preventDefault();
     setEdit(!edit);
-    setCurrentTodo(id);
   };
 
-  const clearHandler = () => {
-    setClear(!clear);
+  const menuHandler = () => {
+    setMenu(!menu);
   };
 
-  const clearAllHandler = () => {
-    const uncompleteTodos = todos.filter((todo) => todo.complete === false);
-    setTodos([]);
-    setTodos(uncompleteTodos);
-    setClear(!clear);
+  const clearAllHandler = async () => {
+    if (user) {
+      const ref = await cloudTodosRef
+        .where("uid", "==", auth.currentUser.uid)
+        .where("complete", "==", true)
+        .get();
+      ref.docs.forEach((doc) => {
+        doc.ref.delete();
+      });
+    } else {
+      const uncompleteTodos = todos.filter((todo) => todo.complete === false);
+      setTodos([]);
+      setTodos(uncompleteTodos);
+    }
+
+    setMenu(!menu);
   };
 
-  const createTodoHandler = (e) => {
+  const createTodoHandler = async (e) => {
     e.preventDefault();
     let inputEndDur;
 
@@ -119,10 +160,12 @@ function App() {
         minsNum.toString().padStart(2, "0");
     }
 
-    setTodos([
-      ...todos,
-      {
-        id: uuid(),
+    if (user) {
+      const { uid } = auth.currentUser;
+
+      await cloudTodosRef.add({
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: uid,
         title: inputTitle,
         desc: inputDesc,
         start: inputStart,
@@ -130,8 +173,22 @@ function App() {
         dur: inputDur,
         duration: duration,
         complete: false,
-      },
-    ]);
+      });
+    } else {
+      setTodos([
+        ...todos,
+        {
+          id: uuid(),
+          title: inputTitle,
+          desc: inputDesc,
+          start: inputStart,
+          end: duration ? inputEndDur : inputEnd,
+          dur: inputDur,
+          duration: duration,
+          complete: false,
+        },
+      ]);
+    }
 
     setInputTitle("");
     setInputDesc("");
@@ -162,27 +219,50 @@ function App() {
         popup,
         edit,
         editHandler,
-        clear,
-        clearHandler,
+        menu,
+        menuHandler,
         createTodoHandler,
         currentTodo,
+        setCurrentTodo,
         clearAllHandler,
+        auth,
+        user,
+        cloudTodosRef,
+        cloudTodos,
       }}
     >
       <div className="App">
         <div className="container main">
           <Status
-            num={todos.filter((todo) => todo.complete === false).length}
+            num={
+              user && cloudTodos
+                ? cloudTodos
+                    .filter(
+                      (cloudTodo) => cloudTodo.uid === auth.currentUser.uid
+                    )
+                    .filter((cloudTodo) => cloudTodo.complete === false).length
+                : todos.filter((todo) => todo.complete === false).length
+            }
           />
-          {sortedTodos.map((todo) => (
-            <Timeslot key={todo.id} todo={todo} />
-          ))}
+
+          {!user &&
+            sortedTodos &&
+            sortedTodos.map((todo) => <Timeslot key={todo.id} todo={todo} />)}
+
+          {user &&
+            cloudTodos &&
+            cloudTodos
+              .filter((cloudTodo) => cloudTodo.uid === auth.currentUser.uid)
+              .map((cloudTodo) => (
+                <Timeslot key={cloudTodo.id} todo={cloudTodo} />
+              ))}
+
           <div className="container addTodo">
             <Button action={popupHandler} text="Add Todo" />
           </div>
           <PopupAddTodo />
           <PopupEdit />
-          <PopupClear />
+          <PopupMenu />
           <div className="bottom"></div>
         </div>
       </div>

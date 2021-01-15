@@ -25,6 +25,9 @@ const PopupEdit = () => {
     currentTodo,
     todos,
     setTodos,
+    user,
+    cloudTodosRef,
+    cloudTodos,
   } = useContext(CreateTodoContext);
 
   // Handler
@@ -42,18 +45,18 @@ const PopupEdit = () => {
   };
 
   const inputDurHandler = (e) => {
-    setInputDur(e.target.value.toString());
+    setInputDur(e.target.value);
   };
 
   const keyPressHandler = (e) => {
     if (e.key === "Enter") {
       if (inputTitle) {
-        createTodoHandler(e);
+        editedHandler(e);
       }
     }
   };
 
-  const editedHandler = (e) => {
+  const editedHandler = async (e) => {
     e.preventDefault();
     let inputEndDur;
     if (duration) {
@@ -61,7 +64,7 @@ const PopupEdit = () => {
       const mins = inputStart.substring(2, 4);
       let hoursNum = Number(hours);
       let minsNum = Number(mins);
-      minsNum += Number(inputDur);
+      minsNum += inputDur;
       let offset = Math.floor(minsNum / 60);
       minsNum %= 60;
       hoursNum += offset;
@@ -74,23 +77,34 @@ const PopupEdit = () => {
         minsNum.toString().padStart(2, "0");
     }
 
-    setTodos(
-      todos.map((item) => {
-        if (item.id === currentTodo) {
-          return {
-            ...item,
-            title: inputTitle,
-            desc: inputDesc ? inputDesc : "Nothing special ...",
-            start: inputStart,
-            end: duration ? inputEndDur : inputEnd,
-            dur: inputDur,
-            duration: duration,
-          };
-        }
-        return item;
-      })
-    );
-
+    if (user) {
+      await cloudTodosRef.doc(currentTodo).update({
+        title: inputTitle,
+        desc: inputDesc,
+        start: inputStart,
+        end: duration ? inputEndDur : inputEnd,
+        dur: inputDur,
+        duration: duration,
+        complete: false,
+      });
+    } else {
+      setTodos(
+        todos.map((item) => {
+          if (item.id === currentTodo) {
+            return {
+              ...item,
+              title: inputTitle,
+              desc: inputDesc,
+              start: inputStart,
+              end: duration ? inputEndDur : inputEnd,
+              dur: inputDur,
+              duration: duration,
+            };
+          }
+          return item;
+        })
+      );
+    }
     setInputTitle("");
     setInputDesc("");
     setInputStart("");
@@ -99,23 +113,47 @@ const PopupEdit = () => {
     editHandler(e);
   };
 
-  const deleteHandler = (e) => {
-    setTodos(todos.filter((item) => item.id !== currentTodo));
+  const deleteHandler = async (e) => {
+    e.preventDefault();
+
+    if (user) {
+      await cloudTodosRef.doc(currentTodo).delete();
+    } else {
+      setTodos(todos.filter((item) => item.id !== currentTodo));
+    }
     editHandler(e);
   };
 
   // useEffect()
   useEffect(() => {
-    todos.forEach((todo) => {
-      if (todo.id === currentTodo) {
-        setInputTitle(todo.title);
-        setInputStart(todo.start);
-        setInputEnd(todo.end);
-        setInputDesc(todo.desc);
-        setInputDur(todo.dur);
-        setDuration(todo.duration);
-      }
-    });
+    if (!user) {
+      todos.forEach((todo) => {
+        if (todo.id === currentTodo) {
+          setInputTitle(todo.title);
+          setInputStart(todo.start);
+          setInputEnd(todo.end);
+          setInputDesc(todo.desc);
+          setInputDur(todo.dur);
+          setDuration(todo.duration);
+        }
+      });
+    }
+  }, [edit]);
+
+  // Firebase
+  useEffect(() => {
+    if (user && cloudTodos) {
+      cloudTodos.forEach((todo) => {
+        if (todo.id === currentTodo) {
+          setInputTitle(todo.title);
+          setInputStart(todo.start);
+          setInputEnd(todo.end);
+          setInputDesc(todo.desc);
+          setInputDur(todo.dur);
+          setDuration(todo.duration);
+        }
+      });
+    }
   }, [edit]);
 
   return (

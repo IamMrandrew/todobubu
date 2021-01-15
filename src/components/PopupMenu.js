@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import { CreateTodoContext } from "../context/CreateTodoContext";
 import Button from "./Button";
+import SignIn from "./SignIn";
+import SignOut from "./SignOut";
 
-const PopupClear = () => {
-  const { clear, clearHandler, clearAllHandler } = useContext(
+const PopupMenu = () => {
+  const { menu, menuHandler, clearAllHandler, auth, user } = useContext(
     CreateTodoContext
   );
   return (
-    <div className="popup-clear">
+    <div className="popup-menu">
       <div
-        className={clear ? "popup-clear-wrapper active" : "popup-clear-wrapper"}
+        className={menu ? "popup-menu-wrapper active" : "popup-menu-wrapper"}
       >
+        <p className="title">Connect to cloud?</p>
+        {user ? <SignOut auth={auth} /> : <SignIn auth={auth} />}
         <p className="title">New day, new beginning?</p>
         <p className="subtitle">
           This move will clear all completed todo. Uncompleted todos will moved
@@ -18,15 +22,15 @@ const PopupClear = () => {
         </p>
         <div className="wrapper">
           <Button action={clearAllHandler} text="Clear all?" />
-          <Button action={clearHandler} text="Cancel" />
+          <Button action={menuHandler} text="Cancel" />
         </div>
       </div>
       <div
-        onClick={clearHandler}
-        className={clear ? "popup-bg active" : "popup-bg"}
+        onClick={menuHandler}
+        className={menu ? "popup-bg active" : "popup-bg"}
       ></div>
     </div>
   );
 };
 
-export default PopupClear;
+export default PopupMenu;
