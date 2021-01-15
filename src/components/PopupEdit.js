@@ -51,7 +51,7 @@ const PopupEdit = () => {
   const keyPressHandler = (e) => {
     if (e.key === "Enter") {
       if (inputTitle) {
-        createTodoHandler(e);
+        editedHandler(e);
       }
     }
   };
