@@ -237,7 +237,15 @@ function App() {
         {user ? <SignOut auth={auth} /> : <SignIn auth={auth} />}
         <div className="container main">
           <Status
-            num={todos.filter((todo) => todo.complete === false).length}
+            num={
+              user && cloudTodos
+                ? cloudTodos
+                    .filter(
+                      (cloudTodo) => cloudTodo.uid === auth.currentUser.uid
+                    )
+                    .filter((cloudTodo) => cloudTodo.complete === false).length
+                : todos.filter((todo) => todo.complete === false).length
+            }
           />
 
           {!user &&
