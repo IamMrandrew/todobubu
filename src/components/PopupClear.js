@@ -9,7 +9,7 @@ const PopupClear = ({ clear, clearHandler, clearAllHandler }) => {
       >
         <p className="title">New day, new beginning?</p>
         <p className="subtitle">
-          This move will clear all passed todo. Also, postponed todos will moved
+          This move will clear all completed todo. Uncompleted todos will moved
           the next day
         </p>
         <div className="wrapper">
