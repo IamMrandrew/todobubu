@@ -78,8 +78,6 @@ const PopupEdit = () => {
 
     if (user) {
       await cloudTodosRef.doc(currentTodo).update({
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: uid,
         title: inputTitle,
         desc: inputDesc,
         start: inputStart,
@@ -95,7 +93,7 @@ const PopupEdit = () => {
             return {
               ...item,
               title: inputTitle,
-              desc: inputDesc ? inputDesc : "Nothing special ...",
+              desc: inputDesc,
               start: inputStart,
               end: duration ? inputEndDur : inputEnd,
               dur: inputDur,
