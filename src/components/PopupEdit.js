@@ -1,30 +1,32 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { CreateTodoContext } from "../context/CreateTodoContext";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 // import { faStopwatch } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
 
-const PopupEdit = ({
-  createTodoHandler,
-  edit,
-  editHandler,
-  inputTitle,
-  setInputTitle,
-  inputDesc,
-  setInputDesc,
-  inputStart,
-  setInputStart,
-  inputEnd,
-  setInputEnd,
-  inputDur,
-  setInputDur,
-  duration,
-  setDuration,
-  currentTodo,
-  todos,
-  setTodos,
-}) => {
+const PopupEdit = () => {
+  const {
+    createTodoHandler,
+    edit,
+    editHandler,
+    inputTitle,
+    setInputTitle,
+    inputDesc,
+    setInputDesc,
+    inputStart,
+    setInputStart,
+    inputEnd,
+    setInputEnd,
+    inputDur,
+    setInputDur,
+    duration,
+    setDuration,
+    currentTodo,
+    todos,
+    setTodos,
+  } = useContext(CreateTodoContext);
+
   // Handler
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);

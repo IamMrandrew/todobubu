@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./Todo";
 
-const Timeslot = ({ todo, todos, setTodos, editHandler }) => {
+const Timeslot = ({ todo }) => {
   return (
     <div className="timeslot">
       <div className="time">
@@ -12,12 +12,7 @@ const Timeslot = ({ todo, todos, setTodos, editHandler }) => {
           {todo.end}
         </h2>
       </div>
-      <Todo
-        todo={todo}
-        todos={todos}
-        setTodos={setTodos}
-        editHandler={editHandler}
-      />
+      <Todo todo={todo} />
     </div>
   );
 };

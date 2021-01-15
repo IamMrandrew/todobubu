@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CreateTodoContext } from "../context/CreateTodoContext";
 
-const Todo = ({ todo, todos, setTodos, editHandler }) => {
+const Todo = ({ todo }) => {
+  const { todos, setTodos, editHandler } = useContext(CreateTodoContext);
+
   const completeHandler = () => {
     setTodos(
       todos.map((item) => {

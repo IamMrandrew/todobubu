@@ -6,22 +6,24 @@ import PopupAddTodo from "./components/PopupAddTodo";
 import PopupEdit from "./components/PopupEdit";
 import { useState, useEffect } from "react";
 import PopupClear from "./components/PopupClear";
+import { CreateTodoContext } from "./context/CreateTodoContext";
 import uuid from "react-uuid";
 
 function App() {
-  // useState()
   const [todos, setTodos] = useState([]);
-  const [sortedTodos, setSortedTodos] = useState([]);
-  const [currentTodo, setCurrentTodo] = useState(0);
-  const [popup, setPopup] = useState(false);
-  const [clear, setClear] = useState(false);
-  const [edit, setEdit] = useState(false);
   const [inputTitle, setInputTitle] = useState("");
   const [inputStart, setInputStart] = useState("");
   const [inputEnd, setInputEnd] = useState("");
   const [inputDur, setInputDur] = useState(30);
   const [inputDesc, setInputDesc] = useState("");
   const [duration, setDuration] = useState(false);
+  const [popup, setPopup] = useState(false);
+
+  const [sortedTodos, setSortedTodos] = useState([]);
+  const [currentTodo, setCurrentTodo] = useState(0);
+
+  const [clear, setClear] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   // useEffect()
   useEffect(() => {
@@ -140,69 +142,51 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="container main">
-        <Status
-          num={todos.filter((todo) => todo.complete === false).length}
-          clearHandler={clearHandler}
-        />
-        {sortedTodos.map((todo) => (
-          <Timeslot
-            key={todo.id}
-            todo={todo}
-            todos={todos}
-            setTodos={setTodos}
-            editHandler={editHandler}
+    <CreateTodoContext.Provider
+      value={{
+        todos,
+        setTodos,
+        inputTitle,
+        setInputTitle,
+        inputStart,
+        setInputStart,
+        inputEnd,
+        setInputEnd,
+        inputDur,
+        setInputDur,
+        inputDesc,
+        setInputDesc,
+        duration,
+        setDuration,
+        popupHandler,
+        popup,
+        edit,
+        editHandler,
+        clear,
+        clearHandler,
+        createTodoHandler,
+        currentTodo,
+        clearAllHandler,
+      }}
+    >
+      <div className="App">
+        <div className="container main">
+          <Status
+            num={todos.filter((todo) => todo.complete === false).length}
           />
-        ))}
-        <div className="container addTodo">
-          <Button action={popupHandler} text="Add Todo" />
+          {sortedTodos.map((todo) => (
+            <Timeslot key={todo.id} todo={todo} />
+          ))}
+          <div className="container addTodo">
+            <Button action={popupHandler} text="Add Todo" />
+          </div>
+          <PopupAddTodo />
+          <PopupEdit />
+          <PopupClear />
+          <div className="bottom"></div>
         </div>
-        <PopupAddTodo
-          createTodoHandler={createTodoHandler}
-          popup={popup}
-          popupHandler={popupHandler}
-          inputTitle={inputTitle}
-          setInputTitle={setInputTitle}
-          inputStart={inputStart}
-          setInputStart={setInputStart}
-          inputEnd={inputEnd}
-          setInputEnd={setInputEnd}
-          inputDur={inputDur}
-          setInputDur={setInputDur}
-          inputDesc={inputDesc}
-          setInputDesc={setInputDesc}
-          duration={duration}
-          setDuration={setDuration}
-        />
-        <PopupEdit
-          createTodoHandler={createTodoHandler}
-          edit={edit}
-          editHandler={editHandler}
-          inputTitle={inputTitle}
-          setInputTitle={setInputTitle}
-          inputStart={inputStart}
-          setInputStart={setInputStart}
-          inputEnd={inputEnd}
-          setInputEnd={setInputEnd}
-          inputDur={inputDur}
-          setInputDur={setInputDur}
-          inputDesc={inputDesc}
-          setInputDesc={setInputDesc}
-          duration={duration}
-          setDuration={setDuration}
-          currentTodo={currentTodo}
-          todos={todos}
-          setTodos={setTodos}
-        />
-        <PopupClear
-          clear={clear}
-          clearHandler={clearHandler}
-          clearAllHandler={clearAllHandler}
-        />
-        <div className="bottom"></div>
       </div>
-    </div>
+    </CreateTodoContext.Provider>
   );
 }
 
