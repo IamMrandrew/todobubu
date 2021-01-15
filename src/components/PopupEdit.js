@@ -42,7 +42,7 @@ const PopupEdit = () => {
   };
 
   const inputDurHandler = (e) => {
-    setInputDur(e.target.value.toString());
+    setInputDur(e.target.value);
   };
 
   const keyPressHandler = (e) => {
@@ -61,7 +61,7 @@ const PopupEdit = () => {
       const mins = inputStart.substring(2, 4);
       let hoursNum = Number(hours);
       let minsNum = Number(mins);
-      minsNum += Number(inputDur);
+      minsNum += inputDur;
       let offset = Math.floor(minsNum / 60);
       minsNum %= 60;
       hoursNum += offset;
