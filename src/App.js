@@ -7,8 +7,6 @@ import Status from "./components/Status";
 import PopupAddTodo from "./components/PopupAddTodo";
 import PopupEdit from "./components/PopupEdit";
 import PopupMenu from "./components/PopupMenu";
-import SignIn from "./components/SignIn";
-import SignOut from "./components/SignOut";
 
 import "./App.css";
 
@@ -54,7 +52,7 @@ function App() {
   const [user] = useAuthState(auth);
 
   const cloudTodosRef = firestore.collection("todos");
-  const query = cloudTodosRef.orderBy("createdAt").limit(25);
+  const query = cloudTodosRef.orderBy("createdAt");
 
   const [cloudTodos] = useCollectionData(query, { idField: "id" });
 
