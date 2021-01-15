@@ -6,6 +6,7 @@ import PopupAddTodo from "./components/PopupAddTodo";
 import PopupEdit from "./components/PopupEdit";
 import { useState, useEffect } from "react";
 import PopupClear from "./components/PopupClear";
+import uuid from "react-uuid";
 
 function App() {
   // useState()
@@ -119,7 +120,7 @@ function App() {
     setTodos([
       ...todos,
       {
-        id: Date.now(),
+        id: uuid(),
         title: inputTitle,
         desc: inputDesc ? inputDesc : "Nothing special ...",
         start: inputStart,
