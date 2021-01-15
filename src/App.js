@@ -122,10 +122,21 @@ function App() {
     setClear(!clear);
   };
 
-  const clearAllHandler = () => {
-    const uncompleteTodos = todos.filter((todo) => todo.complete === false);
-    setTodos([]);
-    setTodos(uncompleteTodos);
+  const clearAllHandler = async () => {
+    if (user) {
+      const ref = await cloudTodosRef
+        .where("uid", "==", auth.currentUser.uid)
+        .where("complete", "==", true)
+        .get();
+      ref.docs.forEach((doc) => {
+        doc.ref.delete();
+      });
+    } else {
+      const uncompleteTodos = todos.filter((todo) => todo.complete === false);
+      setTodos([]);
+      setTodos(uncompleteTodos);
+    }
+
     setClear(!clear);
   };
 
