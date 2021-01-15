@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { CreateTodoContext } from "../context/CreateTodoContext";
 
-const Clear = () => {
-  const { clearHandler } = useContext(CreateTodoContext);
+const Menu = () => {
+  const { menuHandler } = useContext(CreateTodoContext);
   return (
-    <div className="clear" onClick={clearHandler}>
+    <div className="menu" onClick={menuHandler}>
       <div className="bar bar1"></div>
       <div className="bar bar2"></div>
       <div className="bar bar3"></div>
@@ -12,4 +12,4 @@ const Clear = () => {
   );
 };
 
-export default Clear;
+export default Menu;

@@ -1,10 +1,11 @@
 import React from "react";
+import Button from "./Button";
 
 const SignOut = ({ auth }) => {
   return (
     auth.currentUser && (
       <div className="sign-out">
-        <button onClick={() => auth.signOut()}>Sign Out</button>
+        <Button action={() => auth.signOut()} text="Sign Out" />
       </div>
     )
   );

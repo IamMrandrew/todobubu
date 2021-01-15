@@ -6,7 +6,7 @@ import Button from "./components/Button";
 import Status from "./components/Status";
 import PopupAddTodo from "./components/PopupAddTodo";
 import PopupEdit from "./components/PopupEdit";
-import PopupClear from "./components/PopupClear";
+import PopupMenu from "./components/PopupMenu";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
 
@@ -44,7 +44,7 @@ function App() {
   const [sortedTodos, setSortedTodos] = useState([]);
   const [currentTodo, setCurrentTodo] = useState(0);
 
-  const [clear, setClear] = useState(false);
+  const [menu, setMenu] = useState(false);
   const [edit, setEdit] = useState(false);
 
   // Firebase
@@ -118,8 +118,8 @@ function App() {
     setEdit(!edit);
   };
 
-  const clearHandler = () => {
-    setClear(!clear);
+  const menuHandler = () => {
+    setMenu(!menu);
   };
 
   const clearAllHandler = async () => {
@@ -137,7 +137,7 @@ function App() {
       setTodos(uncompleteTodos);
     }
 
-    setClear(!clear);
+    setMenu(!menu);
   };
 
   const createTodoHandler = async (e) => {
@@ -221,8 +221,8 @@ function App() {
         popup,
         edit,
         editHandler,
-        clear,
-        clearHandler,
+        menu,
+        menuHandler,
         createTodoHandler,
         currentTodo,
         setCurrentTodo,
@@ -234,7 +234,6 @@ function App() {
       }}
     >
       <div className="App">
-        {user ? <SignOut auth={auth} /> : <SignIn auth={auth} />}
         <div className="container main">
           <Status
             num={
@@ -265,7 +264,7 @@ function App() {
           </div>
           <PopupAddTodo />
           <PopupEdit />
-          <PopupClear />
+          <PopupMenu />
           <div className="bottom"></div>
         </div>
       </div>

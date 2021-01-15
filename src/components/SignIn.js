@@ -2,6 +2,7 @@ import React from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import Button from "./Button";
 
 const SignIn = ({ auth }) => {
   const signInWithGoogle = () => {
@@ -11,7 +12,7 @@ const SignIn = ({ auth }) => {
 
   return (
     <div className="sign-in">
-      <button onClick={signInWithGoogle}>Sign In</button>
+      <Button action={signInWithGoogle} text="" />
     </div>
   );
 };
