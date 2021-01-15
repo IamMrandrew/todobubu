@@ -24,12 +24,7 @@ const PopupEdit = ({
   currentTodo,
   todos,
   setTodos,
-  delay,
-  setDelay,
 }) => {
-  // useState
-  const [postponed, setPostponed] = useState(false);
-
   // Handler
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);
@@ -46,57 +41,6 @@ const PopupEdit = ({
 
   const inputDurHandler = (e) => {
     setInputDur(e.target.value.toString());
-  };
-
-  const delayHandler = (e) => {
-    setDelay(e.target.value.toString());
-  };
-
-  const delayCalc = (e) => {
-    function addDelay(time) {
-      const hours = time.substring(0, 2);
-      const mins = time.substring(2, 4);
-      let hoursNum = Number(hours);
-      let minsNum = Number(mins);
-      minsNum += Number(delay);
-      let offset = Math.floor(minsNum / 60);
-      minsNum %= 60;
-      hoursNum += offset;
-
-      setPostponed(false);
-      if (hoursNum > 23) {
-        setPostponed(true);
-        hoursNum %= 24;
-      }
-
-      return (
-        hoursNum.toString().padStart(2, "0") +
-        minsNum.toString().padStart(2, "0")
-      );
-    }
-
-    let passed = false;
-    setTodos(
-      todos.map((item) => {
-        if (item.id === currentTodo) {
-          passed = true;
-        }
-        if (passed) {
-          return {
-            ...item,
-            start: addDelay(item.start),
-            end: addDelay(item.end),
-            postponed: postponed,
-          };
-        }
-
-        return item;
-      })
-    );
-    passed = false;
-
-    setDelay(0);
-    editHandler(e);
   };
 
   const keyPressHandler = (e) => {
@@ -183,24 +127,6 @@ const PopupEdit = ({
           value={inputTitle}
           rows="2"
         ></textarea>
-        <p className="label-delay">
-          Quick delay (Delay on this todo and afterwards)
-        </p>
-        <div className="field-wrap">
-          <div className="button-delay" onClick={delayCalc}>
-            <FontAwesomeIcon className="icon" icon={faStopwatch} />
-          </div>
-          <input
-            onChange={delayHandler}
-            className="input-delay"
-            placeholder="0"
-            value={delay}
-            type="number"
-            inputMode="numeric"
-            maxLength="4"
-          />
-          <div className="delay-unit">mins</div>
-        </div>
         <div className="field-wrap">
           <div className="field-start">
             <p className="label-start">When to start?</p>

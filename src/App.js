@@ -21,7 +21,6 @@ function App() {
   const [inputDur, setInputDur] = useState(30);
   const [inputDesc, setInputDesc] = useState("");
   const [duration, setDuration] = useState(false);
-  const [delay, setDelay] = useState(0);
 
   // useEffect()
   useEffect(() => {
@@ -89,12 +88,9 @@ function App() {
   };
 
   const clearAllHandler = () => {
-    const postponedTodos = todos.filter((todo) => todo.postponed === true);
-    postponedTodos.forEach((todo) => {
-      todo.postponed = false;
-    });
+    const uncompleteTodos = todos.filter((todo) => todo.complete === false);
     setTodos([]);
-    setTodos(postponedTodos);
+    setTodos(uncompleteTodos);
     setClear(!clear);
   };
 
@@ -131,7 +127,6 @@ function App() {
         dur: inputDur,
         duration: duration,
         complete: false,
-        postponed: false,
       },
     ]);
 
@@ -198,8 +193,6 @@ function App() {
           currentTodo={currentTodo}
           todos={todos}
           setTodos={setTodos}
-          delay={delay}
-          setDelay={setDelay}
         />
         <PopupClear
           clear={clear}
