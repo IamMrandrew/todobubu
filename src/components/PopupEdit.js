@@ -142,7 +142,7 @@ const PopupEdit = () => {
 
   // Firebase
   useEffect(() => {
-    if (user) {
+    if (user && cloudTodos) {
       cloudTodos.forEach((todo) => {
         if (todo.id === currentTodo) {
           setInputTitle(todo.title);
