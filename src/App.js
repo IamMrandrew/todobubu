@@ -122,7 +122,7 @@ function App() {
       {
         id: uuid(),
         title: inputTitle,
-        desc: inputDesc ? inputDesc : "Nothing special ...",
+        desc: inputDesc,
         start: inputStart,
         end: duration ? inputEndDur : inputEnd,
         dur: inputDur,
