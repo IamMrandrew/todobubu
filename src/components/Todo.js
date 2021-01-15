@@ -22,7 +22,7 @@ const Todo = ({ todo, todos, setTodos, editHandler }) => {
           {todo.title}
         </h3>
         <p className={todo.complete ? "todo-desc completed" : "todo-desc"}>
-          {todo.desc}
+          {todo.desc ? todo.desc : "Nothing special ..."}
         </p>
       </div>
       <div
