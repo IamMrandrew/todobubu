@@ -1,13 +1,35 @@
-import "./App.css";
+import { useState, useEffect } from "react";
+import { CreateTodoContext } from "./context/CreateTodoContext";
+
 import Timeslot from "./components/Timeslot";
 import Button from "./components/Button";
 import Status from "./components/Status";
 import PopupAddTodo from "./components/PopupAddTodo";
 import PopupEdit from "./components/PopupEdit";
-import { useState, useEffect } from "react";
 import PopupClear from "./components/PopupClear";
-import { CreateTodoContext } from "./context/CreateTodoContext";
+import SignIn from "./components/SignIn";
+import SignOut from "./components/SignOut";
+
+import "./App.css";
+
 import uuid from "react-uuid";
+
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
+
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyAVAWD9wDAS1SM0foL1GMDi99QxNfMuiHc",
+  authDomain: "todobubu-c9fa5.firebaseapp.com",
+  projectId: "todobubu-c9fa5",
+  storageBucket: "todobubu-c9fa5.appspot.com",
+  messagingSenderId: "235166346449",
+  appId: "1:235166346449:web:434764d66fbd69c8a8e9f0",
+  measurementId: "G-Q655C8RR6D",
+});
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -24,6 +46,17 @@ function App() {
 
   const [clear, setClear] = useState(false);
   const [edit, setEdit] = useState(false);
+
+  // Firebase
+  const auth = firebase.auth();
+  const firestore = firebase.firestore();
+
+  const [user] = useAuthState(auth);
+
+  const cloudTodosRef = firestore.collection("todos");
+  const query = cloudTodosRef.orderBy("createdAt").limit(25);
+
+  const [cloudTodos] = useCollectionData(query, { idField: "id" });
 
   // useEffect()
   useEffect(() => {
@@ -80,10 +113,9 @@ function App() {
     setPopup(!popup);
   };
 
-  const editHandler = (e, id) => {
+  const editHandler = (e) => {
     e.preventDefault();
     setEdit(!edit);
-    setCurrentTodo(id);
   };
 
   const clearHandler = () => {
@@ -97,7 +129,7 @@ function App() {
     setClear(!clear);
   };
 
-  const createTodoHandler = (e) => {
+  const createTodoHandler = async (e) => {
     e.preventDefault();
     let inputEndDur;
 
@@ -119,10 +151,12 @@ function App() {
         minsNum.toString().padStart(2, "0");
     }
 
-    setTodos([
-      ...todos,
-      {
-        id: uuid(),
+    if (user) {
+      const { uid } = auth.currentUser;
+
+      await cloudTodosRef.add({
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: uid,
         title: inputTitle,
         desc: inputDesc,
         start: inputStart,
@@ -130,8 +164,22 @@ function App() {
         dur: inputDur,
         duration: duration,
         complete: false,
-      },
-    ]);
+      });
+    } else {
+      setTodos([
+        ...todos,
+        {
+          id: uuid(),
+          title: inputTitle,
+          desc: inputDesc,
+          start: inputStart,
+          end: duration ? inputEndDur : inputEnd,
+          dur: inputDur,
+          duration: duration,
+          complete: false,
+        },
+      ]);
+    }
 
     setInputTitle("");
     setInputDesc("");
@@ -166,17 +214,33 @@ function App() {
         clearHandler,
         createTodoHandler,
         currentTodo,
+        setCurrentTodo,
         clearAllHandler,
+        auth,
+        user,
+        cloudTodosRef,
+        cloudTodos,
       }}
     >
       <div className="App">
+        {user ? <SignOut auth={auth} /> : <SignIn auth={auth} />}
         <div className="container main">
           <Status
             num={todos.filter((todo) => todo.complete === false).length}
           />
-          {sortedTodos.map((todo) => (
-            <Timeslot key={todo.id} todo={todo} />
-          ))}
+
+          {!user &&
+            sortedTodos &&
+            sortedTodos.map((todo) => <Timeslot key={todo.id} todo={todo} />)}
+
+          {user &&
+            cloudTodos &&
+            cloudTodos
+              .filter((cloudTodo) => cloudTodo.uid === auth.currentUser.uid)
+              .map((cloudTodo) => (
+                <Timeslot key={cloudTodo.id} todo={cloudTodo} />
+              ))}
+
           <div className="container addTodo">
             <Button action={popupHandler} text="Add Todo" />
           </div>

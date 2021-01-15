@@ -27,6 +27,7 @@ const PopupEdit = () => {
     setTodos,
     user,
     cloudTodosRef,
+    cloudTodos,
   } = useContext(CreateTodoContext);
 
   // Handler
@@ -119,16 +120,34 @@ const PopupEdit = () => {
 
   // useEffect()
   useEffect(() => {
-    todos.forEach((todo) => {
-      if (todo.id === currentTodo) {
-        setInputTitle(todo.title);
-        setInputStart(todo.start);
-        setInputEnd(todo.end);
-        setInputDesc(todo.desc);
-        setInputDur(todo.dur);
-        setDuration(todo.duration);
-      }
-    });
+    if (!user) {
+      todos.forEach((todo) => {
+        if (todo.id === currentTodo) {
+          setInputTitle(todo.title);
+          setInputStart(todo.start);
+          setInputEnd(todo.end);
+          setInputDesc(todo.desc);
+          setInputDur(todo.dur);
+          setDuration(todo.duration);
+        }
+      });
+    }
+  }, [edit]);
+
+  // Firebase
+  useEffect(() => {
+    if (user) {
+      cloudTodos.forEach((todo) => {
+        if (todo.id === currentTodo) {
+          setInputTitle(todo.title);
+          setInputStart(todo.start);
+          setInputEnd(todo.end);
+          setInputDesc(todo.desc);
+          setInputDur(todo.dur);
+          setDuration(todo.duration);
+        }
+      });
+    }
   }, [edit]);
 
   return (
