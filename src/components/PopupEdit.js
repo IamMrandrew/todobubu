@@ -25,6 +25,8 @@ const PopupEdit = () => {
     currentTodo,
     todos,
     setTodos,
+    user,
+    cloudTodosRef,
   } = useContext(CreateTodoContext);
 
   // Handler
@@ -53,7 +55,7 @@ const PopupEdit = () => {
     }
   };
 
-  const editedHandler = (e) => {
+  const editedHandler = async (e) => {
     e.preventDefault();
     let inputEndDur;
     if (duration) {
@@ -74,23 +76,36 @@ const PopupEdit = () => {
         minsNum.toString().padStart(2, "0");
     }
 
-    setTodos(
-      todos.map((item) => {
-        if (item.id === currentTodo) {
-          return {
-            ...item,
-            title: inputTitle,
-            desc: inputDesc ? inputDesc : "Nothing special ...",
-            start: inputStart,
-            end: duration ? inputEndDur : inputEnd,
-            dur: inputDur,
-            duration: duration,
-          };
-        }
-        return item;
-      })
-    );
-
+    if (user) {
+      await cloudTodosRef.doc(currentTodo).update({
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: uid,
+        title: inputTitle,
+        desc: inputDesc,
+        start: inputStart,
+        end: duration ? inputEndDur : inputEnd,
+        dur: inputDur,
+        duration: duration,
+        complete: false,
+      });
+    } else {
+      setTodos(
+        todos.map((item) => {
+          if (item.id === currentTodo) {
+            return {
+              ...item,
+              title: inputTitle,
+              desc: inputDesc ? inputDesc : "Nothing special ...",
+              start: inputStart,
+              end: duration ? inputEndDur : inputEnd,
+              dur: inputDur,
+              duration: duration,
+            };
+          }
+          return item;
+        })
+      );
+    }
     setInputTitle("");
     setInputDesc("");
     setInputStart("");
