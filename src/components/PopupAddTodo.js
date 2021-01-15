@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CreateTodoContext } from "../context/CreateTodoContext";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
 
-const PopupAddTodo = ({
-  createTodoHandler,
-  popup,
-  popupHandler,
-  inputTitle,
-  setInputTitle,
-  inputDesc,
-  setInputDesc,
-  inputStart,
-  setInputStart,
-  inputEnd,
-  setInputEnd,
-  inputDur,
-  setInputDur,
-  duration,
-  setDuration,
-}) => {
+const PopupAddTodo = () => {
+  const {
+    createTodoHandler,
+    popup,
+    popupHandler,
+    inputTitle,
+    setInputTitle,
+    inputDesc,
+    setInputDesc,
+    inputStart,
+    setInputStart,
+    inputEnd,
+    setInputEnd,
+    inputDur,
+    setInputDur,
+    duration,
+    setDuration,
+  } = useContext(CreateTodoContext);
+
   //Handler
   const inputTitleHandler = (e) => {
     setInputTitle(e.target.value);

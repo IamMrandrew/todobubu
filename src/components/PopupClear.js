@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CreateTodoContext } from "../context/CreateTodoContext";
 import Button from "./Button";
 
-const PopupClear = ({ clear, clearHandler, clearAllHandler }) => {
+const PopupClear = () => {
+  const { clear, clearHandler, clearAllHandler } = useContext(
+    CreateTodoContext
+  );
   return (
     <div className="popup-clear">
       <div

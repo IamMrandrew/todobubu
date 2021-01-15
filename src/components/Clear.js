@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CreateTodoContext } from "../context/CreateTodoContext";
 
-const Clear = ({ clearHandler }) => {
+const Clear = () => {
+  const { clearHandler } = useContext(CreateTodoContext);
   return (
     <div className="clear" onClick={clearHandler}>
       <div className="bar bar1"></div>
