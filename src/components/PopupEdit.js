@@ -113,8 +113,14 @@ const PopupEdit = () => {
     editHandler(e);
   };
 
-  const deleteHandler = (e) => {
-    setTodos(todos.filter((item) => item.id !== currentTodo));
+  const deleteHandler = async (e) => {
+    e.preventDefault();
+
+    if (user) {
+      await cloudTodosRef.doc(currentTodo).delete();
+    } else {
+      setTodos(todos.filter((item) => item.id !== currentTodo));
+    }
     editHandler(e);
   };
 
