@@ -28,12 +28,13 @@
     }
 
     button {
-      padding: 12px 15px;
+      padding: 24px 15px;
       border-radius: 12px;
       max-height: 45px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 10px;
     }
 
     .sign-in,
@@ -59,6 +60,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 0px;
       }
       button:nth-child(1) {
         margin-right: 25px;
