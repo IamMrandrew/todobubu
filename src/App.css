@@ -1741,7 +1741,7 @@ html {
 }
 
 .popup-menu .popup-menu-wrapper button {
-  padding: 12px 15px;
+  padding: 24px 15px;
   border-radius: 12px;
   max-height: 45px;
   display: -webkit-box;
@@ -1753,6 +1753,7 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 10px;
 }
 
 .popup-menu .popup-menu-wrapper .sign-in,
@@ -1793,6 +1794,7 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 0px;
 }
 
 .popup-menu .popup-menu-wrapper .wrapper button:nth-child(1) {

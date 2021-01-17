@@ -10,9 +10,15 @@ const SignIn = ({ auth }) => {
     auth.signInWithPopup(provider);
   };
 
+  const signInWithGithub = () => {
+    const provider = new firebase.auth.GithubAuthProvider();
+    auth.signInWithPopup(provider);
+  };
+
   return (
     <div className="sign-in">
-      <Button action={signInWithGoogle} text="" />
+      <Button action={signInWithGoogle} text="" provider="Google" />
+      <Button action={signInWithGithub} text="" provider="Github" />
     </div>
   );
 };
