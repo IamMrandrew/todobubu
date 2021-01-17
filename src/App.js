@@ -52,7 +52,7 @@ function App() {
   const [user] = useAuthState(auth);
 
   const cloudTodosRef = firestore.collection("todos");
-  const query = cloudTodosRef.orderBy("createdAt");
+  const query = cloudTodosRef.orderBy("start");
 
   const [cloudTodos] = useCollectionData(query, { idField: "id" });
 
