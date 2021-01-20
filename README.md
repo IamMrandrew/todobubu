@@ -38,7 +38,7 @@ As a todo list application, Todobubu provided a simple and handy way for users t
 
 Todobubu will help the users to sort the todos and give users a brief schedule of the day. Plan well before you start the journey. Well scheduled will definitely help to increase the productivity of the day.
 
-![Todobubu-Mockup](https://user-images.githubusercontent.com/62586450/105208978-45376100-5b84-11eb-872e-c5a1c500c610.png)
+<img src="https://user-images.githubusercontent.com/62586450/105213816-2340dd00-5b8a-11eb-8949-0b1a7bfe1bca.jpg" width="400" height="400">
 
 ### Responsive & Clean UI/UX Design
 With a bright and smart blue color, Todobubu enlights your whole day. The entire application use only the color #A9BCEE, its shaded color #414F75, muted color #B5C1DE, and achromatic colors with different grayscale.
@@ -100,4 +100,6 @@ To achieve the cloud based service, Firebase Cloud Firestore & Authentication is
 For authentication, using the `useAuthState` can identify if the user is logged in or not throughout the entire applications. I chose to use the Google and Github sign-in this time while Firebase provided various options for developers. 
 
 ## Contributing
-This app is built within 1-2 weeks only with design and implementation. There may be some bugs or functions not working well. Feel free to leave comments or even fork it and create a pull request. I will be happy about it!!!
+This app is built within 1-2 weeks only with design and implementation. There may be some bugs or functions not working well. 
+
+Feel free to leave comments or even fork it and create a pull request. I will be happy about it!!!
