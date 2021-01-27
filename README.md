@@ -1,6 +1,7 @@
 <img src="https://user-images.githubusercontent.com/62586450/105201950-685e1280-5b7c-11eb-8676-f77b2f5dc3e7.png" width="128" height="128">
 
 # Todobubu
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aeb7211c-b619-4423-8352-67c54e8ecb43/deploy-status)](https://app.netlify.com/sites/todobubu/deploys)
 
 Todobubu, a light weight daily todo list application. It focus on planning daily workflow, making your day become more productive. It is a cloud-based, cross-platform application which you can access your todos everywhere with your phones, tablets or desktops.
 
